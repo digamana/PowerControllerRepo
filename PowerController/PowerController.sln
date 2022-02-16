@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerController", "PowerController\PowerController.csproj", "{C6501A88-099C-48C5-B249-85E969E7DFC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerController", "PowerController\PowerController.csproj", "{EE638E56-D6C4-4B4E-BA79-D09891FD3239}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C6501A88-099C-48C5-B249-85E969E7DFC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6501A88-099C-48C5-B249-85E969E7DFC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6501A88-099C-48C5-B249-85E969E7DFC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6501A88-099C-48C5-B249-85E969E7DFC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE638E56-D6C4-4B4E-BA79-D09891FD3239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE638E56-D6C4-4B4E-BA79-D09891FD3239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE638E56-D6C4-4B4E-BA79-D09891FD3239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE638E56-D6C4-4B4E-BA79-D09891FD3239}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {64208451-611F-4C25-9EE0-DF85687CF115}
+		SolutionGuid = {7D165925-0DAB-44E3-941D-D78F854916CD}
 	EndGlobalSection
 EndGlobal
