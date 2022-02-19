@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PowerController.Main;
 using Microsoft.Win32;
+using System.Diagnostics;
+
 namespace PowerController
 {
     public partial class PowerController : Form
@@ -25,8 +27,26 @@ namespace PowerController
          */
         public PowerController()
         {
+           
             InitializeComponent();
-     
+            
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "powercfg.exe",
+                    Arguments = "/list",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+            proc.Start();
+            while (!proc.StandardOutput.EndOfStream)
+            {
+                string line = proc.StandardOutput.ReadLine();
+                // do something with line
+            }
         }
 
         private void chkAutoOpen_CheckedChanged(object sender, EventArgs e)
@@ -42,6 +62,33 @@ namespace PowerController
             else
                 reg.remove(key);
             MessageBox.Show("end");
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    this.WindowState = FormWindowState.Maximized;
+                    this.Hide();
+                }
+                else if (this.WindowState == FormWindowState.Minimized)
+                {
+                    this.Show();
+                    this.WindowState = FormWindowState.Normal;
+                    this.Activate();
+                }
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                //if (MessageBox.Show("", "",MessageBoxButton.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+                //{
+                //    DialogResult = DialogResult.No;
+                //    Dispose();
+                //    Close();
+                //}
+            }
         }
     }
 }
