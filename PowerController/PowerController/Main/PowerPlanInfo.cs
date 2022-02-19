@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PowerController.Main
 {
-    public  class PowerPlan
+    public  class PowerPlanInfo
     {
         public string strName { get; set; }
         public string strGuid { get; set; }
-        public PowerPlan(string strName,string strGuid)
+        public PowerPlanInfo(string strName,string strGuid)
         {
             this.strName = strName;
             this.strGuid = strGuid;
