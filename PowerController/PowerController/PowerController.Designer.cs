@@ -30,10 +30,11 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.chkAutoOpen = new System.Windows.Forms.CheckBox();
+            this.chkActive = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkActive)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -53,26 +54,18 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
             this.flowLayoutPanel1.Controls.Add(this.chkAutoOpen);
+            this.flowLayoutPanel1.Controls.Add(this.chkActive);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(458, 274);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 4);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(422, 98);
-            this.flowLayoutPanel2.TabIndex = 0;
-            // 
             // chkAutoOpen
             // 
             this.chkAutoOpen.AutoSize = true;
-            this.chkAutoOpen.Location = new System.Drawing.Point(4, 110);
+            this.chkAutoOpen.Location = new System.Drawing.Point(4, 4);
             this.chkAutoOpen.Margin = new System.Windows.Forms.Padding(4);
             this.chkAutoOpen.Name = "chkAutoOpen";
             this.chkAutoOpen.Size = new System.Drawing.Size(127, 22);
@@ -80,6 +73,16 @@
             this.chkAutoOpen.Text = "chkAutoOpen";
             this.chkAutoOpen.UseVisualStyleBackColor = true;
             this.chkAutoOpen.CheckedChanged += new System.EventHandler(this.chkAutoOpen_CheckedChanged);
+            // 
+            // chkActive
+            // 
+            this.chkActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.chkActive.DropDownWidth = 121;
+            this.chkActive.Location = new System.Drawing.Point(138, 3);
+            this.chkActive.Name = "chkActive";
+            this.chkActive.Size = new System.Drawing.Size(121, 29);
+            this.chkActive.TabIndex = 2;
+            this.chkActive.SelectedIndexChanged += new System.EventHandler(this.chkActive_SelectedIndexChanged);
             // 
             // PowerController
             // 
@@ -93,6 +96,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkActive)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -101,8 +105,8 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.CheckBox chkAutoOpen;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox chkActive;
     }
 }
 

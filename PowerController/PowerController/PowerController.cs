@@ -19,34 +19,25 @@ namespace PowerController
         1.(O)開機後執行
         2.序列化記住選項
         3.右下角執行
-        4.列出所有選項電源計畫
+        4.(O)列出所有選項電源計畫
         5.UI倒數更新
-        6.UI的下拉式選單內容，依據電腦中的電源計畫數量不同而不同
+        6.(O)UI的下拉式選單內容，依據電腦中的電源計畫數量不同而不同
 
          
          */
+        private PowerPlan powerPlan { get; set; }
         public PowerController()
         {
            
             InitializeComponent();
-            
-            var proc = new Process
+            powerPlan = new PowerPlan();
+            foreach (var item in powerPlan.dictPowerPlanInfo)
             {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "powercfg.exe",
-                    Arguments = "/list",
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow = true
-                }
-            };
-            proc.Start();
-            while (!proc.StandardOutput.EndOfStream)
-            {
-                string line = proc.StandardOutput.ReadLine();
-                // do something with line
+                chkActive.Items.Add(item.Key);
             }
+            
+            //Process.Start("powercfg"," /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c");
+
         }
 
         private void chkAutoOpen_CheckedChanged(object sender, EventArgs e)
@@ -89,6 +80,23 @@ namespace PowerController
                 //    Close();
                 //}
             }
+        }
+
+        private void chkActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var PowerGuid = powerPlan.dictPowerPlanInfo[chkActive.SelectedItem.ToString()];
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "powercfg.exe",
+                    Arguments = $"/setactive {PowerGuid}",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+            proc.Start();
         }
     }
 }
