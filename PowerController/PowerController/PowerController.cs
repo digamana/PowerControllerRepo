@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using PowerController.Main;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace PowerController
 {
@@ -30,14 +32,15 @@ namespace PowerController
         {
            
             InitializeComponent();
+            
             powerPlan = new PowerPlan();
             foreach (var item in powerPlan.dictPowerPlanInfo)
             {
                 chkActive.Items.Add(item.Key);
             }
-            
-            //Process.Start("powercfg"," /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c");
 
+            //Process.Start("powercfg"," /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c");
+            DeserializeFormSettings();
         }
 
         private void chkAutoOpen_CheckedChanged(object sender, EventArgs e)
@@ -97,6 +100,52 @@ namespace PowerController
                 }
             };
             proc.Start();
+        }
+
+        private void PowerController_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Assigning the current selected index of combobox to serialize class.
+            SaveParameter f1 = new SaveParameter();
+            f1.chkActive_selectIndex = this.chkActive.SelectedIndex;
+    
+
+            //Serialize
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fsout = new FileStream("ComboBoxSettings.binary", FileMode.Create, FileAccess.Write, FileShare.None);
+            try
+            {
+                using (fsout)
+                {
+                    bf.Serialize(fsout, f1);
+                }
+            }
+            catch (Exception Ex)
+            {
+                //Some Exception occured
+            }
+        }
+        public void DeserializeFormSettings()
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fsin;
+
+            if (File.Exists("ComboBoxSettings.binary"))
+                fsin = new FileStream("ComboBoxSettings.binary", FileMode.Open, FileAccess.Read, FileShare.None);
+            else
+                return;
+            try
+            {
+                using (fsin)
+                {
+                    SaveParameter f1 = (SaveParameter)bf.Deserialize(fsin);
+                    this.chkActive.SelectedIndex = f1.chkActive_selectIndex;
+ 
+                }
+            }
+            catch (Exception Ex)
+            {
+                // "An error has occured";  
+            }
         }
     }
 }
