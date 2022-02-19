@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.chkAutoOpen = new System.Windows.Forms.CheckBox();
             this.chkActive = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.pBar1 = new System.Windows.Forms.ProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActive)).BeginInit();
@@ -54,8 +58,10 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.chkAutoOpen);
             this.flowLayoutPanel1.Controls.Add(this.chkActive);
+            this.flowLayoutPanel1.Controls.Add(this.pBar1);
+            this.flowLayoutPanel1.Controls.Add(this.chkAutoOpen);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -65,7 +71,7 @@
             // chkAutoOpen
             // 
             this.chkAutoOpen.AutoSize = true;
-            this.chkAutoOpen.Location = new System.Drawing.Point(4, 4);
+            this.chkAutoOpen.Location = new System.Drawing.Point(237, 4);
             this.chkAutoOpen.Margin = new System.Windows.Forms.Padding(4);
             this.chkAutoOpen.Name = "chkAutoOpen";
             this.chkAutoOpen.Size = new System.Drawing.Size(127, 22);
@@ -78,11 +84,34 @@
             // 
             this.chkActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.chkActive.DropDownWidth = 121;
-            this.chkActive.Location = new System.Drawing.Point(138, 3);
+            this.chkActive.Location = new System.Drawing.Point(3, 3);
             this.chkActive.Name = "chkActive";
             this.chkActive.Size = new System.Drawing.Size(121, 29);
             this.chkActive.TabIndex = 2;
             this.chkActive.SelectedIndexChanged += new System.EventHandler(this.chkActive_SelectedIndexChanged);
+            // 
+            // pBar1
+            // 
+            this.pBar1.Location = new System.Drawing.Point(130, 3);
+            this.pBar1.Name = "pBar1";
+            this.pBar1.Size = new System.Drawing.Size(100, 23);
+            this.pBar1.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(371, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // PowerController
             // 
@@ -108,6 +137,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.CheckBox chkAutoOpen;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox chkActive;
+        private System.Windows.Forms.ProgressBar pBar1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

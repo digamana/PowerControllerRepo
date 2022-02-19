@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main\addToRegForRun.cs" />
+    <Compile Include="Main\GetLastUserInput.cs" />
     <Compile Include="Main\PowerPlan.cs" />
     <Compile Include="Main\PowerPlanInfo.cs" />
     <Compile Include="Main\SaveParameter.cs" />

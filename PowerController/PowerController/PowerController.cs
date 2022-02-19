@@ -45,6 +45,16 @@ namespace PowerController
 
         private void chkAutoOpen_CheckedChanged(object sender, EventArgs e)
         {
+            //startProgress();
+            pBar1.Visible = true;
+            // 設定進度條最小值.
+            pBar1.Minimum = 1;
+            // 設定進度條最大值.
+            pBar1.Maximum = 15;
+            // 設定進度條初始值
+            pBar1.Value = 1;
+            // 設定每次增加的步長
+            pBar1.Step = 1;
             addToRegForRun reg = new addToRegForRun();
             string key = "PowerController";
             string value = System.Environment.CommandLine.Replace("\"", "");  //會取得程式的位址加雙引號，所以要移掉
@@ -146,6 +156,25 @@ namespace PowerController
             {
                 // "An error has occured";  
             }
+        }
+  
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pBar1.Visible = true;
+            // 設定進度條最小值.
+            pBar1.Minimum = 1;
+            // 設定進度條最大值.
+            pBar1.Maximum = 15;
+            // 設定進度條初始值
+            pBar1.Value = 1;
+            // 設定每次增加的步長
+            pBar1.Step = 1;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            pBar1.PerformStep();
         }
     }
 }
