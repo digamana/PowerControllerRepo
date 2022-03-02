@@ -12,6 +12,7 @@ using Microsoft.Win32;
 using System.Diagnostics;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace PowerController
 {
@@ -41,6 +42,13 @@ namespace PowerController
 
             //Process.Start("powercfg"," /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c");
             DeserializeFormSettings();
+        }
+        private void addPowerPlanInfoItem()
+        {
+            foreach (var item in powerPlan.dictPowerPlanInfo)
+            {
+                chkActive.Items.Add(item.Key);
+            }
         }
 
         private void chkAutoOpen_CheckedChanged(object sender, EventArgs e)
