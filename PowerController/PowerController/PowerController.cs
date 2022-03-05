@@ -28,16 +28,19 @@ namespace PowerController
 
          
          */
+        private int setIdleTime { get; set; } = 0;
         private PowerPlan powerPlan { get; set; }
         public PowerController()
         {
-           
+          
             InitializeComponent();
-            
+            setProcessBar(1);
             powerPlan = new PowerPlan();
             foreach (var item in powerPlan.dictPowerPlanInfo)
             {
-                chkActive.Items.Add(item.Key);
+                cmbActive.Items.Add(item.Key);
+                cmbIdle.Items.Add(item.Key);
+                cmbExe.Items.Add(item.Key);
             }
 
             //Process.Start("powercfg"," /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c");
@@ -50,32 +53,7 @@ namespace PowerController
                 chkActive.Items.Add(item.Key);
             }
         }
-
-        private void chkAutoOpen_CheckedChanged(object sender, EventArgs e)
-        {
-            //startProgress();
-            pBar1.Visible = true;
-            // 設定進度條最小值.
-            pBar1.Minimum = 1;
-            // 設定進度條最大值.
-            pBar1.Maximum = 15;
-            // 設定進度條初始值
-            pBar1.Value = 1;
-            // 設定每次增加的步長
-            pBar1.Step = 1;
-            addToRegForRun reg = new addToRegForRun();
-            string key = "PowerController";
-            string value = System.Environment.CommandLine.Replace("\"", "");  //會取得程式的位址加雙引號，所以要移掉
-            if (chkAutoOpen.Checked)
-            {
-                reg.add(key, value);
-                reg.chk(key);
-            }
-            else
-                reg.remove(key);
-            MessageBox.Show("end");
-        }
-
+         
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -123,10 +101,12 @@ namespace PowerController
         private void PowerController_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Assigning the current selected index of combobox to serialize class.
-            SaveParameter f1 = new SaveParameter();
-            f1.chkActive_selectIndex = this.chkActive.SelectedIndex;
-    
-
+            SaveParameter SP = new SaveParameter();
+            SP.cmbActive_selectIndex = this.cmbActive.SelectedIndex;
+            SP.cmbIdle_selectIndex = this.cmbIdle.SelectedIndex;
+            SP.cmbExecute_selectIndex = this.cmbExe.SelectedIndex;
+            SP.cmbCountDown_selectIndex = this.cmbSetIdleTime.SelectedIndex;
+            SP.cmbWakeup_selectIndex = this.cmbWakeUp.SelectedIndex;
             //Serialize
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fsout = new FileStream("ComboBoxSettings.binary", FileMode.Create, FileAccess.Write, FileShare.None);
@@ -134,7 +114,7 @@ namespace PowerController
             {
                 using (fsout)
                 {
-                    bf.Serialize(fsout, f1);
+                    bf.Serialize(fsout, SP);
                 }
             }
             catch (Exception Ex)
@@ -156,8 +136,11 @@ namespace PowerController
                 using (fsin)
                 {
                     SaveParameter f1 = (SaveParameter)bf.Deserialize(fsin);
-                    this.chkActive.SelectedIndex = f1.chkActive_selectIndex;
- 
+                    this.cmbActive.SelectedIndex = f1.cmbActive_selectIndex;
+                    this.cmbIdle.SelectedIndex = f1.cmbIdle_selectIndex;
+                    this.cmbExe.SelectedIndex = f1.cmbExecute_selectIndex;
+                    this.cmbSetIdleTime.SelectedIndex = f1.cmbCountDown_selectIndex;
+                    this.cmbWakeUp.SelectedIndex = f1.cmbWakeup_selectIndex;
                 }
             }
             catch (Exception Ex)
@@ -169,20 +152,53 @@ namespace PowerController
 
         private void button1_Click(object sender, EventArgs e)
         {
-            pBar1.Visible = true;
+
+        }
+        private void setProcessBar(int pBarmax)
+        {
+            proBarIdleCountDown.Visible = true;
             // 設定進度條最小值.
-            pBar1.Minimum = 1;
+            proBarIdleCountDown.Minimum = 1;
             // 設定進度條最大值.
-            pBar1.Maximum = 15;
+            proBarIdleCountDown.Maximum = pBarmax;
             // 設定進度條初始值
-            pBar1.Value = 1;
+            proBarIdleCountDown.Value = pBarmax;
             // 設定每次增加的步長
-            pBar1.Step = 1;
+            proBarIdleCountDown.Step = -1;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            pBar1.PerformStep();
+            proBarIdleCountDown.PerformStep();
+        }
+
+        private void cmbSetIdleTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String setting = cmbSetIdleTime.Text;
+            String[] strArr = cmbSetIdleTime.Text.Split(':');
+            int setIdleTime = int.Parse(strArr[0]) * 3600 + int.Parse(strArr[1]) * 60 + int.Parse(strArr[2]);
+            setProcessBar(setIdleTime);
+        }
+
+        private void cmbTurnOn_CheckedChanged(object sender, EventArgs e)
+        {
+            addToRegForRun reg = new addToRegForRun();
+            string key = "PowerController";
+            string value = System.Environment.CommandLine.Replace("\"", "");  //會取得程式的位址加雙引號，所以要移掉
+            if (chkAutoOpen.Checked)
+            {
+                reg.add(key, value);
+                reg.chk(key);
+            }
+            else
+                reg.remove(key);
+ 
+        }
+
+        private void btnOpenPowerPlan_Click(object sender, EventArgs e)
+        {
+            var cplPath = System.IO.Path.Combine(Environment.SystemDirectory, "control.exe");
+            System.Diagnostics.Process.Start(cplPath, "/name Microsoft.PowerOptions");
         }
     }
 }

@@ -11,6 +11,10 @@ namespace PowerController.Main
     public class SaveParameter
     {
         [OptionalField]
-        public int chkActive_selectIndex = 0;
+        public int cmbActive_selectIndex = 0;
+        public int cmbIdle_selectIndex = 0;
+        public int cmbExecute_selectIndex = 0;
+        public int cmbCountDown_selectIndex = 0;
+        public int cmbWakeup_selectIndex = 0;
     }
 }

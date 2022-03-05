@@ -2,6 +2,9 @@
 using System;
 namespace PowerController.Main
 {
+    /// <summary>
+    /// 開機自動執行
+    /// </summary>
     class addToRegForRun
     {
         private static RegistryKey getRunKey()
