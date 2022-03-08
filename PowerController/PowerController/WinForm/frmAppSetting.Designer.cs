@@ -28,109 +28,175 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.dgvProcess = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProcessName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnRemove = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonListBox1 = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtbSoftwareName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProcess)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // dgvProcess
+            // 
+            this.dgvProcess.AllowUserToDeleteRows = false;
+            this.dgvProcess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProcess.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProcessName,
+            this.State});
+            this.dgvProcess.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvProcess.Location = new System.Drawing.Point(3, 3);
+            this.dgvProcess.Name = "dgvProcess";
+            this.dgvProcess.ReadOnly = true;
+            this.dgvProcess.RowHeadersWidth = 62;
+            this.dgvProcess.RowTemplate.Height = 31;
+            this.dgvProcess.Size = new System.Drawing.Size(594, 417);
+            this.dgvProcess.TabIndex = 1;
+            // 
+            // State
+            // 
+            this.State.HeaderText = "State";
+            this.State.MinimumWidth = 8;
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
+            this.State.Width = 150;
+            // 
+            // ProcessName
+            // 
+            this.ProcessName.HeaderText = "ProcessName";
+            this.ProcessName.MinimumWidth = 8;
+            this.ProcessName.Name = "ProcessName";
+            this.ProcessName.ReadOnly = true;
+            this.ProcessName.Width = 150;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 600F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.kryptonListBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dgvProcess, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(337, 316);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(832, 423);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRemove.Location = new System.Drawing.Point(3, 211);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(220, 43);
+            this.btnRemove.TabIndex = 1;
+            this.btnRemove.Values.Text = "Remove";
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(120, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(97, 47);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Values.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSave.Location = new System.Drawing.Point(3, 315);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(220, 43);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Values.Text = "Save";
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.btnSave, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.btnAdd, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnRemove, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnSave, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.btnRemove, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(171, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(603, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(163, 310);
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(226, 417);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // btnAdd
+            // tableLayoutPanel3
             // 
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdd.Location = new System.Drawing.Point(3, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(157, 47);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Values.Text = "kryptonButton1";
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
+            this.tableLayoutPanel3.Controls.Add(this.txtbSoftwareName, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnAdd, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(220, 98);
+            this.tableLayoutPanel3.TabIndex = 3;
             // 
-            // btnRemove
+            // txtbSoftwareName
             // 
-            this.btnRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRemove.Location = new System.Drawing.Point(3, 106);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(157, 43);
-            this.btnRemove.TabIndex = 1;
-            this.btnRemove.Values.Text = "kryptonButton2";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSave.Location = new System.Drawing.Point(3, 209);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(157, 43);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Values.Text = "Save";
-            // 
-            // kryptonListBox1
-            // 
-            this.kryptonListBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonListBox1.Items.AddRange(new object[] {
-            "123",
-            "456",
-            "789"});
-            this.kryptonListBox1.ItemStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.NavigatorStack;
-            this.kryptonListBox1.Location = new System.Drawing.Point(3, 3);
-            this.kryptonListBox1.Name = "kryptonListBox1";
-            this.kryptonListBox1.Size = new System.Drawing.Size(162, 310);
-            this.kryptonListBox1.TabIndex = 1;
+            this.txtbSoftwareName.Location = new System.Drawing.Point(3, 3);
+            this.txtbSoftwareName.Name = "txtbSoftwareName";
+            this.txtbSoftwareName.Size = new System.Drawing.Size(111, 31);
+            this.txtbSoftwareName.TabIndex = 4;
             // 
             // frmAppSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 316);
+            this.ClientSize = new System.Drawing.Size(832, 423);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmAppSetting";
             this.Text = "frmAppSetting";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProcess)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvProcess;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProcessName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSave;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAdd;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnRemove;
-        private ComponentFactory.Krypton.Toolkit.KryptonListBox kryptonListBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtbSoftwareName;
     }
 }

@@ -54,6 +54,7 @@
     <Compile Include="Main\GetLastUserInput.cs" />
     <Compile Include="Main\PowerPlan.cs" />
     <Compile Include="Main\PowerPlanInfo.cs" />
+    <Compile Include="Main\ProcessState.cs" />
     <Compile Include="Main\SaveParameter.cs" />
     <Compile Include="PowerController.cs">
       <SubType>Form</SubType>

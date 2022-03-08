@@ -158,7 +158,7 @@ namespace PowerController
         {
             proBarIdleCountDown.Visible = true;
             // 設定進度條最小值.
-            proBarIdleCountDown.Minimum = 1;
+            proBarIdleCountDown.Minimum = 0;
             // 設定進度條最大值.
             proBarIdleCountDown.Maximum = pBarmax;
             // 設定進度條初始值
@@ -170,6 +170,8 @@ namespace PowerController
         private void timer1_Tick(object sender, EventArgs e)
         {
             proBarIdleCountDown.PerformStep();
+            label1.Text= GetLastUserInput.GetLastInputTime().ToString();
+            if (proBarIdleCountDown.Value == 1) MessageBox.Show("","g");
         }
 
         private void cmbSetIdleTime_SelectedIndexChanged(object sender, EventArgs e)
@@ -197,8 +199,9 @@ namespace PowerController
 
         private void btnOpenPowerPlan_Click(object sender, EventArgs e)
         {
-            var cplPath = System.IO.Path.Combine(Environment.SystemDirectory, "control.exe");
-            System.Diagnostics.Process.Start(cplPath, "/name Microsoft.PowerOptions");
+            GetLastUserInput.GetIdleTickCount();
+            //var cplPath = System.IO.Path.Combine(Environment.SystemDirectory, "control.exe");
+            //System.Diagnostics.Process.Start(cplPath, "/name Microsoft.PowerOptions");
         }
     }
 }

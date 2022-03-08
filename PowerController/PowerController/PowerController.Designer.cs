@@ -45,7 +45,6 @@
             this.btnOpen = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.cmbTurnOn = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.proBarIdleCountDown = new System.Windows.Forms.ProgressBar();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.chkActive = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.pBar1 = new System.Windows.Forms.ProgressBar();
@@ -65,6 +64,8 @@
             this.lblCurretPowerPlan = new System.Windows.Forms.Label();
             this.btnOpenPowerPlan = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.proBarIdleCountDown = new System.Windows.Forms.ProgressBar();
             lblExecuting = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -285,15 +286,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(711, 34);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
-            // proBarIdleCountDown
-            // 
-            this.proBarIdleCountDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.proBarIdleCountDown.Location = new System.Drawing.Point(204, 4);
-            this.proBarIdleCountDown.Margin = new System.Windows.Forms.Padding(4);
-            this.proBarIdleCountDown.Name = "proBarIdleCountDown";
-            this.proBarIdleCountDown.Size = new System.Drawing.Size(503, 26);
-            this.proBarIdleCountDown.TabIndex = 0;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.chkActive);
@@ -302,6 +294,7 @@
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel8);
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel6);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(729, 4);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -502,6 +495,24 @@
             this.kryptonComboBox1.Size = new System.Drawing.Size(121, 29);
             this.kryptonComboBox1.TabIndex = 4;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(266, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 18);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
+            // 
+            // proBarIdleCountDown
+            // 
+            this.proBarIdleCountDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.proBarIdleCountDown.Location = new System.Drawing.Point(204, 4);
+            this.proBarIdleCountDown.Margin = new System.Windows.Forms.Padding(4);
+            this.proBarIdleCountDown.Name = "proBarIdleCountDown";
+            this.proBarIdleCountDown.Size = new System.Drawing.Size(503, 26);
+            this.proBarIdleCountDown.TabIndex = 0;
+            // 
             // PowerController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -566,7 +577,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpen;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox cmbTurnOn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.ProgressBar proBarIdleCountDown;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblWake;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbSetIdleTime;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -575,6 +585,8 @@
         private System.Windows.Forms.Label lblCurretPowerPlan;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpenPowerPlan;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar proBarIdleCountDown;
     }
 }
 
