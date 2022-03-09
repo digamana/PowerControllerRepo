@@ -30,16 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvProcess = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProcessName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnRemove = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnRemove = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtbSoftwareName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.btnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProcess)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -48,35 +46,18 @@
             // 
             // dgvProcess
             // 
+            this.dgvProcess.AllowUserToAddRows = false;
             this.dgvProcess.AllowUserToDeleteRows = false;
             this.dgvProcess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProcess.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ProcessName,
-            this.State});
             this.dgvProcess.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProcess.Location = new System.Drawing.Point(3, 3);
             this.dgvProcess.Name = "dgvProcess";
             this.dgvProcess.ReadOnly = true;
             this.dgvProcess.RowHeadersWidth = 62;
             this.dgvProcess.RowTemplate.Height = 31;
+            this.dgvProcess.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProcess.Size = new System.Drawing.Size(594, 417);
             this.dgvProcess.TabIndex = 1;
-            // 
-            // State
-            // 
-            this.State.HeaderText = "State";
-            this.State.MinimumWidth = 8;
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
-            this.State.Width = 150;
-            // 
-            // ProcessName
-            // 
-            this.ProcessName.HeaderText = "ProcessName";
-            this.ProcessName.MinimumWidth = 8;
-            this.ProcessName.Name = "ProcessName";
-            this.ProcessName.ReadOnly = true;
-            this.ProcessName.Width = 150;
             // 
             // tableLayoutPanel1
             // 
@@ -92,40 +73,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(832, 423);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRemove.Location = new System.Drawing.Point(3, 211);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(220, 43);
-            this.btnRemove.TabIndex = 1;
-            this.btnRemove.Values.Text = "Remove";
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(120, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(97, 47);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Values.Text = "Add";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSave.Location = new System.Drawing.Point(3, 315);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(220, 43);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Values.Text = "Save";
             // 
             // tableLayoutPanel2
             // 
@@ -145,6 +92,26 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(226, 417);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSave.Location = new System.Drawing.Point(3, 315);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(220, 43);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Values.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnEvent);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRemove.Location = new System.Drawing.Point(3, 211);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(220, 43);
+            this.btnRemove.TabIndex = 1;
+            this.btnRemove.Values.Text = "Remove";
+            this.btnRemove.Click += new System.EventHandler(this.btnEvent);
             // 
             // tableLayoutPanel3
             // 
@@ -168,6 +135,21 @@
             this.txtbSoftwareName.Size = new System.Drawing.Size(111, 31);
             this.txtbSoftwareName.TabIndex = 4;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(120, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(97, 47);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Values.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnEvent);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmAppSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -176,6 +158,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmAppSetting";
             this.Text = "frmAppSetting";
+            this.Load += new System.EventHandler(this.frmAppSetting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProcess)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -188,8 +171,6 @@
         #endregion
 
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvProcess;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProcessName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

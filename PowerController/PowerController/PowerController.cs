@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using ComponentFactory.Krypton.Toolkit;
+using PowerController.WinForm;
 
 namespace PowerController
 {
@@ -28,6 +29,7 @@ namespace PowerController
 
          
          */
+        frmAppSetting frmAppSetting = new frmAppSetting(); 
         private int setIdleTime { get; set; } = 0;
         private PowerPlan powerPlan { get; set; }
         public PowerController()
