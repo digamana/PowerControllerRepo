@@ -79,9 +79,9 @@ namespace PowerController.WinForm
         /// <param name="strDescribe"></param>
         private void AddItem(string strSoftwareName,string strDescribe)
         {
-            if (IsProcessOpen(strSoftwareName)==false) MessageBox.Show($"ProcessNmae {strSoftwareName} Not Find", "Error");
+            if (IsProcessOpen(strSoftwareName)==false) MessageBox.Show($"ProcessNmae 「{strSoftwareName}」 Not Find", "Error");
             else if (checkColumnNotSameItem(strSoftwareName) == false) table.Rows.Add(strDescribe, strSoftwareName, "Nothing");
-            else MessageBox.Show($"Software {strSoftwareName} already exists","Error");
+            else MessageBox.Show($"Software 「{strSoftwareName}」 already exists","Error");
         }
         /// <summary>
         /// 確認新加入的Item 名稱是否已存在，基本上要回false才能允許加入新Item

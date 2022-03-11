@@ -55,6 +55,39 @@ namespace PowerController.Main
             }
             return lstPowerPlanInfo;
         }
+        public string[] getCurrentPowerPlan()
+        {
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "powercfg.exe",
+                    Arguments = "/getactivescheme",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+            proc.Start();
+            while (!proc.StandardOutput.EndOfStream)
+            {
+                string line = proc.StandardOutput.ReadLine();
+                if (line.Contains("GUID"))
+                {
+                    line = line.Replace("(", "");
+                    line = line.Replace(")", "");
+                    string[] arrTemp = line.Split(' ');
+
+                    //lstPowerPlanInfo.Add(new PowerPlanInfo(arrTemp[4], arrTemp[2]));
+                    //dictPowerPlanInfo.Add(arrTemp[4], arrTemp[2]);
+                    return new string[] { arrTemp[4], arrTemp[2] };
+                }
+
+                // do something with line
+            }
+            
+            return new string[] { };
+        }
 
         public void ChangePowerPlan()
         { 

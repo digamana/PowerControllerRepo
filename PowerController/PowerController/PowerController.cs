@@ -32,6 +32,8 @@ namespace PowerController
         frmAppSetting frmAppSetting = new frmAppSetting(); 
         private int setIdleTime { get; set; } = 0;
         private PowerPlan powerPlan { get; set; }
+        private bool bTriggerMIn { get; set; } = false;
+        private string[] AryCurrentPowerPlan { get; set; }     
         public PowerController()
         {
           
@@ -43,8 +45,11 @@ namespace PowerController
                 cmbActive.Items.Add(item.Key);
                 cmbIdle.Items.Add(item.Key);
                 cmbExe.Items.Add(item.Key);
+                cmbCurrentPowerPlan.Items.Add(item.Key);
             }
+            var aa=powerPlan.getCurrentPowerPlan();
 
+         
             //Process.Start("powercfg"," /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c");
             DeserializeFormSettings();
         }
@@ -86,6 +91,21 @@ namespace PowerController
         private void chkActive_SelectedIndexChanged(object sender, EventArgs e)
         {
             var PowerGuid = powerPlan.dictPowerPlanInfo[chkActive.SelectedItem.ToString()];
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "powercfg.exe",
+                    Arguments = $"/setactive {PowerGuid}",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+            proc.Start();
+        }
+        private void ChangePower(string PowerGuid)
+        {
             var proc = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -163,6 +183,7 @@ namespace PowerController
             proBarIdleCountDown.Minimum = 0;
             // 設定進度條最大值.
             proBarIdleCountDown.Maximum = pBarmax;
+
             // 設定進度條初始值
             proBarIdleCountDown.Value = pBarmax;
             // 設定每次增加的步長
@@ -171,16 +192,27 @@ namespace PowerController
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+           
             proBarIdleCountDown.PerformStep();
-            label1.Text= GetLastUserInput.GetLastInputTime().ToString();
-            if (proBarIdleCountDown.Value == 1) MessageBox.Show("","g");
+
+
+            if (proBarIdleCountDown.Value == 0 && timer1.Enabled == true)
+            { 
+                Console.WriteLine("執行設定作業");
+                ChangePower(powerPlan.dictPowerPlanInfo[cmbIdle.SelectedItem.ToString()]);
+            }
+
+            label1.Text = GetLastUserInput.GetIdleTickCount().ToString();
+
+
+            if (proBarIdleCountDown.Value == 0)timer1.Enabled=false;
         }
 
         private void cmbSetIdleTime_SelectedIndexChanged(object sender, EventArgs e)
         {
             String setting = cmbSetIdleTime.Text;
             String[] strArr = cmbSetIdleTime.Text.Split(':');
-            int setIdleTime = int.Parse(strArr[0]) * 3600 + int.Parse(strArr[1]) * 60 + int.Parse(strArr[2]);
+            setIdleTime = int.Parse(strArr[0]) * 3600 + int.Parse(strArr[1]) * 60 + int.Parse(strArr[2]);
             setProcessBar(setIdleTime);
         }
 
@@ -202,8 +234,37 @@ namespace PowerController
         private void btnOpenPowerPlan_Click(object sender, EventArgs e)
         {
             GetLastUserInput.GetIdleTickCount();
+
             //var cplPath = System.IO.Path.Combine(Environment.SystemDirectory, "control.exe");
             //System.Diagnostics.Process.Start(cplPath, "/name Microsoft.PowerOptions");
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            //label1.Text = Method1((int)GetLastUserInput.GetIdleTickCount());
+
+            AryCurrentPowerPlan = powerPlan.getCurrentPowerPlan();
+            var iIndex = cmbCurrentPowerPlan.FindString(AryCurrentPowerPlan[0]);
+            cmbCurrentPowerPlan.SelectedIndex = iIndex;
+            if (GetLastUserInput.GetIdleTickCount() < 50)
+            {
+                ChangePower(powerPlan.dictPowerPlanInfo[cmbActive.SelectedItem.ToString()]);
+                setProcessBar(setIdleTime);
+                timer1.Enabled = true;
+            } 
+
+        }
+        static string Method1(int millisecs)
+        {
+            int hours = millisecs / 3600000;
+            int mins = (millisecs % 3600000) / 60000;
+            // Make sure you use the appropriate decimal separator
+            return string.Format("{0:D2}:{1:D2}:{2:D2}", hours, mins, millisecs % 60000 / 1000);
+        }
+
+        private void cmbCurrentPowerPlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangePower(powerPlan.dictPowerPlanInfo[cmbCurrentPowerPlan.SelectedItem.ToString()]);
         }
     }
 }

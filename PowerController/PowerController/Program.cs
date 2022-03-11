@@ -17,9 +17,9 @@ namespace PowerController
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new PowerController());
-            Application.Run(new WinForm.frmAppSetting());
-            
+            Application.Run(new PowerController());
+            //Application.Run(new WinForm.frmAppSetting());
+
         }
     }
 }

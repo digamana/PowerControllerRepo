@@ -29,22 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            ComponentFactory.Krypton.Toolkit.KryptonLabel lblExecuting;
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblCD = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.cmbSetIdleTime = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.cmbWakeUp = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.lblWake = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbExe = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.txtbIdle = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.cmbIdle = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.cmbActive = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.txtbActive = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.btnOpen = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.cmbTurnOn = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.proBarIdleCountDown = new System.Windows.Forms.ProgressBar();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblCurretStatusTro = new System.Windows.Forms.Label();
+            this.lblCurretStatusDetail = new System.Windows.Forms.Label();
+            this.lblCurretPowerPlan = new System.Windows.Forms.Label();
+            this.btnOpenPowerPlan = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.cmbCurrentPowerPlan = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.chkActive = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.pBar1 = new System.Windows.Forms.ProgressBar();
@@ -55,44 +59,31 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.progressBar3 = new System.Windows.Forms.ProgressBar();
             this.cmbExecuting = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.kryptonCommand1 = new ComponentFactory.Krypton.Toolkit.KryptonCommand();
-            this.cmbSetIdleTime = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblCurretStatusTro = new System.Windows.Forms.Label();
-            this.lblCurretStatusDetail = new System.Windows.Forms.Label();
-            this.lblCurretPowerPlan = new System.Windows.Forms.Label();
-            this.btnOpenPowerPlan = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.proBarIdleCountDown = new System.Windows.Forms.ProgressBar();
-            lblExecuting = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.lblCD = new System.Windows.Forms.Label();
+            this.lblExecuting = new System.Windows.Forms.Label();
+            this.lblActive = new System.Windows.Forms.Label();
+            this.lblIdle = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbSetIdleTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbWakeUp)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbExe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbIdle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbActive)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbCurrentPowerPlan)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActive)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbSetIdleTime)).BeginInit();
-            this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblExecuting
-            // 
-            lblExecuting.Location = new System.Drawing.Point(4, 4);
-            lblExecuting.Margin = new System.Windows.Forms.Padding(4);
-            lblExecuting.Name = "lblExecuting";
-            lblExecuting.Size = new System.Drawing.Size(144, 29);
-            lblExecuting.TabIndex = 3;
-            lblExecuting.Values.Text = "When Executing";
             // 
             // tableLayoutPanel1
             // 
@@ -139,10 +130,10 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.lblCD, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.cmbSetIdleTime, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.cmbWakeUp, 3, 0);
             this.tableLayoutPanel7.Controls.Add(this.lblWake, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.lblCD, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4);
@@ -152,14 +143,31 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(709, 42);
             this.tableLayoutPanel7.TabIndex = 5;
             // 
-            // lblCD
+            // cmbSetIdleTime
             // 
-            this.lblCD.Location = new System.Drawing.Point(4, 4);
-            this.lblCD.Margin = new System.Windows.Forms.Padding(4);
-            this.lblCD.Name = "lblCD";
-            this.lblCD.Size = new System.Drawing.Size(115, 29);
-            this.lblCD.TabIndex = 4;
-            this.lblCD.Values.Text = "Count Down";
+            this.cmbSetIdleTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSetIdleTime.DropDownWidth = 121;
+            this.cmbSetIdleTime.Items.AddRange(new object[] {
+            "00:00:10",
+            "00:00:20",
+            "00:00:30",
+            "00:01:00",
+            "00:05:00",
+            "00:10:00",
+            "00:20:00",
+            "00:30:00",
+            "01:00:00",
+            "02:00:00",
+            "03:00:00",
+            "04:00:00",
+            "05:00:00",
+            "06:00:00"});
+            this.cmbSetIdleTime.Location = new System.Drawing.Point(204, 4);
+            this.cmbSetIdleTime.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbSetIdleTime.Name = "cmbSetIdleTime";
+            this.cmbSetIdleTime.Size = new System.Drawing.Size(146, 29);
+            this.cmbSetIdleTime.TabIndex = 3;
+            this.cmbSetIdleTime.SelectedIndexChanged += new System.EventHandler(this.cmbSetIdleTime_SelectedIndexChanged);
             // 
             // cmbWakeUp
             // 
@@ -188,13 +196,13 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel5.Controls.Add(lblExecuting, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.cmbExe, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.txtbIdle, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.cmbIdle, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.cmbActive, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.txtbActive, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.btnOpen, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lblExecuting, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lblActive, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.lblIdle, 0, 2);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(4, 94);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
@@ -216,15 +224,6 @@
             this.cmbExe.Size = new System.Drawing.Size(182, 29);
             this.cmbExe.TabIndex = 2;
             // 
-            // txtbIdle
-            // 
-            this.txtbIdle.Location = new System.Drawing.Point(4, 104);
-            this.txtbIdle.Margin = new System.Windows.Forms.Padding(4);
-            this.txtbIdle.Name = "txtbIdle";
-            this.txtbIdle.Size = new System.Drawing.Size(96, 29);
-            this.txtbIdle.TabIndex = 0;
-            this.txtbIdle.Values.Text = "When Idle";
-            // 
             // cmbIdle
             // 
             this.cmbIdle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -244,15 +243,6 @@
             this.cmbActive.Name = "cmbActive";
             this.cmbActive.Size = new System.Drawing.Size(182, 29);
             this.cmbActive.TabIndex = 1;
-            // 
-            // txtbActive
-            // 
-            this.txtbActive.Location = new System.Drawing.Point(4, 54);
-            this.txtbActive.Margin = new System.Windows.Forms.Padding(4);
-            this.txtbActive.Name = "txtbActive";
-            this.txtbActive.Size = new System.Drawing.Size(115, 29);
-            this.txtbActive.TabIndex = 0;
-            this.txtbActive.Values.Text = "When Active";
             // 
             // btnOpen
             // 
@@ -285,6 +275,82 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(711, 34);
             this.tableLayoutPanel3.TabIndex = 7;
+            // 
+            // proBarIdleCountDown
+            // 
+            this.proBarIdleCountDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.proBarIdleCountDown.Location = new System.Drawing.Point(204, 4);
+            this.proBarIdleCountDown.Margin = new System.Windows.Forms.Padding(4);
+            this.proBarIdleCountDown.Name = "proBarIdleCountDown";
+            this.proBarIdleCountDown.Size = new System.Drawing.Size(503, 26);
+            this.proBarIdleCountDown.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 5;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.lblCurretStatusTro, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lblCurretStatusDetail, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lblCurretPowerPlan, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnOpenPowerPlan, 4, 0);
+            this.tableLayoutPanel4.Controls.Add(this.cmbCurrentPowerPlan, 3, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 248);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(711, 105);
+            this.tableLayoutPanel4.TabIndex = 8;
+            // 
+            // lblCurretStatusTro
+            // 
+            this.lblCurretStatusTro.AutoSize = true;
+            this.lblCurretStatusTro.Location = new System.Drawing.Point(3, 0);
+            this.lblCurretStatusTro.Name = "lblCurretStatusTro";
+            this.lblCurretStatusTro.Size = new System.Drawing.Size(118, 18);
+            this.lblCurretStatusTro.TabIndex = 0;
+            this.lblCurretStatusTro.Text = "CurretStatusTro";
+            // 
+            // lblCurretStatusDetail
+            // 
+            this.lblCurretStatusDetail.AutoSize = true;
+            this.lblCurretStatusDetail.Location = new System.Drawing.Point(145, 0);
+            this.lblCurretStatusDetail.Name = "lblCurretStatusDetail";
+            this.lblCurretStatusDetail.Size = new System.Drawing.Size(50, 18);
+            this.lblCurretStatusDetail.TabIndex = 1;
+            this.lblCurretStatusDetail.Text = "label2";
+            // 
+            // lblCurretPowerPlan
+            // 
+            this.lblCurretPowerPlan.AutoSize = true;
+            this.lblCurretPowerPlan.Location = new System.Drawing.Point(287, 0);
+            this.lblCurretPowerPlan.Name = "lblCurretPowerPlan";
+            this.lblCurretPowerPlan.Size = new System.Drawing.Size(125, 18);
+            this.lblCurretPowerPlan.TabIndex = 2;
+            this.lblCurretPowerPlan.Text = "CurretPowerPlan";
+            // 
+            // btnOpenPowerPlan
+            // 
+            this.btnOpenPowerPlan.Location = new System.Drawing.Point(571, 3);
+            this.btnOpenPowerPlan.Name = "btnOpenPowerPlan";
+            this.btnOpenPowerPlan.Size = new System.Drawing.Size(137, 65);
+            this.btnOpenPowerPlan.TabIndex = 3;
+            this.btnOpenPowerPlan.Values.Text = "OpenPowerPlan";
+            this.btnOpenPowerPlan.Click += new System.EventHandler(this.btnOpenPowerPlan_Click);
+            // 
+            // cmbCurrentPowerPlan
+            // 
+            this.cmbCurrentPowerPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCurrentPowerPlan.DropDownWidth = 121;
+            this.cmbCurrentPowerPlan.Location = new System.Drawing.Point(429, 3);
+            this.cmbCurrentPowerPlan.Name = "cmbCurrentPowerPlan";
+            this.cmbCurrentPowerPlan.Size = new System.Drawing.Size(121, 29);
+            this.cmbCurrentPowerPlan.TabIndex = 4;
+            this.cmbCurrentPowerPlan.SelectedIndexChanged += new System.EventHandler(this.cmbCurrentPowerPlan_SelectedIndexChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -393,6 +459,15 @@
             this.cmbExecuting.TabIndex = 2;
             this.cmbExecuting.Values.Text = "When Executing";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(266, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 18);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
+            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -403,115 +478,61 @@
             // 
             this.kryptonCommand1.Text = "kryptonCommand1";
             // 
-            // cmbSetIdleTime
+            // timer2
             // 
-            this.cmbSetIdleTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSetIdleTime.DropDownWidth = 121;
-            this.cmbSetIdleTime.Items.AddRange(new object[] {
-            "00:00:10",
-            "00:00:20",
-            "00:00:30",
-            "00:01:00",
-            "00:05:00",
-            "00:10:00",
-            "00:20:00",
-            "00:30:00",
-            "01:00:00",
-            "02:00:00",
-            "03:00:00",
-            "04:00:00",
-            "05:00:00",
-            "06:00:00"});
-            this.cmbSetIdleTime.Location = new System.Drawing.Point(204, 4);
-            this.cmbSetIdleTime.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbSetIdleTime.Name = "cmbSetIdleTime";
-            this.cmbSetIdleTime.Size = new System.Drawing.Size(146, 29);
-            this.cmbSetIdleTime.TabIndex = 3;
-            this.cmbSetIdleTime.SelectedIndexChanged += new System.EventHandler(this.cmbSetIdleTime_SelectedIndexChanged);
+            this.timer2.Enabled = true;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // tableLayoutPanel4
+            // lblCD
             // 
-            this.tableLayoutPanel4.ColumnCount = 5;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.Controls.Add(this.lblCurretStatusTro, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.lblCurretStatusDetail, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.lblCurretPowerPlan, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btnOpenPowerPlan, 4, 0);
-            this.tableLayoutPanel4.Controls.Add(this.kryptonComboBox1, 3, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 248);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(711, 105);
-            this.tableLayoutPanel4.TabIndex = 8;
+            this.lblCD.AutoSize = true;
+            this.lblCD.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblCD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCD.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblCD.Location = new System.Drawing.Point(3, 0);
+            this.lblCD.Name = "lblCD";
+            this.lblCD.Size = new System.Drawing.Size(194, 42);
+            this.lblCD.TabIndex = 7;
+            this.lblCD.Text = "Count Down";
+            this.lblCD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblCurretStatusTro
+            // lblExecuting
             // 
-            this.lblCurretStatusTro.AutoSize = true;
-            this.lblCurretStatusTro.Location = new System.Drawing.Point(3, 0);
-            this.lblCurretStatusTro.Name = "lblCurretStatusTro";
-            this.lblCurretStatusTro.Size = new System.Drawing.Size(118, 18);
-            this.lblCurretStatusTro.TabIndex = 0;
-            this.lblCurretStatusTro.Text = "CurretStatusTro";
+            this.lblExecuting.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblExecuting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblExecuting.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblExecuting.Location = new System.Drawing.Point(3, 0);
+            this.lblExecuting.Name = "lblExecuting";
+            this.lblExecuting.Size = new System.Drawing.Size(194, 50);
+            this.lblExecuting.TabIndex = 0;
+            this.lblExecuting.Text = "When Executing";
+            this.lblExecuting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblCurretStatusDetail
+            // lblActive
             // 
-            this.lblCurretStatusDetail.AutoSize = true;
-            this.lblCurretStatusDetail.Location = new System.Drawing.Point(145, 0);
-            this.lblCurretStatusDetail.Name = "lblCurretStatusDetail";
-            this.lblCurretStatusDetail.Size = new System.Drawing.Size(50, 18);
-            this.lblCurretStatusDetail.TabIndex = 1;
-            this.lblCurretStatusDetail.Text = "label2";
+            this.lblActive.AutoSize = true;
+            this.lblActive.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblActive.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblActive.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblActive.Location = new System.Drawing.Point(3, 50);
+            this.lblActive.Name = "lblActive";
+            this.lblActive.Size = new System.Drawing.Size(194, 50);
+            this.lblActive.TabIndex = 5;
+            this.lblActive.Text = "When Active";
+            this.lblActive.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblCurretPowerPlan
+            // lblIdle
             // 
-            this.lblCurretPowerPlan.AutoSize = true;
-            this.lblCurretPowerPlan.Location = new System.Drawing.Point(287, 0);
-            this.lblCurretPowerPlan.Name = "lblCurretPowerPlan";
-            this.lblCurretPowerPlan.Size = new System.Drawing.Size(125, 18);
-            this.lblCurretPowerPlan.TabIndex = 2;
-            this.lblCurretPowerPlan.Text = "CurretPowerPlan";
-            // 
-            // btnOpenPowerPlan
-            // 
-            this.btnOpenPowerPlan.Location = new System.Drawing.Point(571, 3);
-            this.btnOpenPowerPlan.Name = "btnOpenPowerPlan";
-            this.btnOpenPowerPlan.Size = new System.Drawing.Size(137, 65);
-            this.btnOpenPowerPlan.TabIndex = 3;
-            this.btnOpenPowerPlan.Values.Text = "OpenPowerPlan";
-            this.btnOpenPowerPlan.Click += new System.EventHandler(this.btnOpenPowerPlan_Click);
-            // 
-            // kryptonComboBox1
-            // 
-            this.kryptonComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kryptonComboBox1.DropDownWidth = 121;
-            this.kryptonComboBox1.Location = new System.Drawing.Point(429, 3);
-            this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.Size = new System.Drawing.Size(121, 29);
-            this.kryptonComboBox1.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(266, 87);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 18);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
-            // 
-            // proBarIdleCountDown
-            // 
-            this.proBarIdleCountDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.proBarIdleCountDown.Location = new System.Drawing.Point(204, 4);
-            this.proBarIdleCountDown.Margin = new System.Windows.Forms.Padding(4);
-            this.proBarIdleCountDown.Name = "proBarIdleCountDown";
-            this.proBarIdleCountDown.Size = new System.Drawing.Size(503, 26);
-            this.proBarIdleCountDown.TabIndex = 0;
+            this.lblIdle.AutoSize = true;
+            this.lblIdle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblIdle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblIdle.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblIdle.Location = new System.Drawing.Point(3, 100);
+            this.lblIdle.Name = "lblIdle";
+            this.lblIdle.Size = new System.Drawing.Size(194, 50);
+            this.lblIdle.TabIndex = 6;
+            this.lblIdle.Text = "When Idle";
+            this.lblIdle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // PowerController
             // 
@@ -528,6 +549,7 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbSetIdleTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbWakeUp)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
@@ -535,16 +557,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbIdle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbActive)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbCurrentPowerPlan)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActive)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbSetIdleTime)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -566,14 +587,11 @@
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox cmbExecuting;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblCD;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbWakeUp;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbExe;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel txtbIdle;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbIdle;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbActive;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel txtbActive;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpen;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox cmbTurnOn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -584,9 +602,14 @@
         private System.Windows.Forms.Label lblCurretStatusDetail;
         private System.Windows.Forms.Label lblCurretPowerPlan;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpenPowerPlan;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbCurrentPowerPlan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar proBarIdleCountDown;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label lblCD;
+        private System.Windows.Forms.Label lblExecuting;
+        private System.Windows.Forms.Label lblActive;
+        private System.Windows.Forms.Label lblIdle;
     }
 }
 
