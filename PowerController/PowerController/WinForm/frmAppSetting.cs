@@ -160,5 +160,38 @@ namespace PowerController.WinForm
         }
 
 
+        /// <summary>
+        /// 掃描軟體是否執行中
+        /// </summary>
+        /// <param name="dgvProcess"></param>
+        /// <returns></returns>
+        public bool ScanColumns(KryptonDataGridView dgvProcess)
+        {
+            bool bResult = false;
+           
+            foreach (DataGridViewRow item in dgvProcess.Rows)
+            {
+                {
+                    var ProcessName = item.Cells[COL1_PROCESSNAME].Value.ToString();
+                    if (IsProcessOpen(ProcessName))
+                    {
+                        item.Cells[COL2_STATE].Value = "Active";
+                        item.Cells[COL2_STATE].Style.BackColor = Color.Green;
+
+                        string strSoftwareTitle = System.Diagnostics.Process.GetProcessesByName(ProcessName)[0].MainWindowTitle;
+                        if (strSoftwareTitle == string.Empty) item.Cells[COL3_DESCRIBE].Value = "Nothing";
+                        else item.Cells[COL3_DESCRIBE].Value = strSoftwareTitle;
+                        bResult = true;
+                    }
+                    else
+                    {
+                        item.Cells[COL2_STATE].Value = "Not Active";
+                        item.Cells[COL2_STATE].Style.BackColor = Color.Red;
+                    }
+
+                }
+            }
+            return bResult;
+        }
     }
 }

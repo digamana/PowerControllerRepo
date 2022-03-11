@@ -33,7 +33,8 @@ namespace PowerController
         private int setIdleTime { get; set; } = 0;
         private PowerPlan powerPlan { get; set; }
         private bool bTriggerMIn { get; set; } = false;
-        private string[] AryCurrentPowerPlan { get; set; }     
+        private string[] AryCurrentPowerPlan { get; set; }
+        bool bSoftwareActive { get; set; } = false;
         public PowerController()
         {
           
@@ -45,7 +46,7 @@ namespace PowerController
                 cmbActive.Items.Add(item.Key);
                 cmbIdle.Items.Add(item.Key);
                 cmbExe.Items.Add(item.Key);
-                cmbCurrentPowerPlan.Items.Add(item.Key);
+                //cmbCurrentPowerPlan.Items.Add(item.Key);
             }
             var aa=powerPlan.getCurrentPowerPlan();
 
@@ -53,14 +54,7 @@ namespace PowerController
             //Process.Start("powercfg"," /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c");
             DeserializeFormSettings();
         }
-        private void addPowerPlanInfoItem()
-        {
-            foreach (var item in powerPlan.dictPowerPlanInfo)
-            {
-                chkActive.Items.Add(item.Key);
-            }
-        }
-         
+        
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -88,22 +82,22 @@ namespace PowerController
             }
         }
 
-        private void chkActive_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var PowerGuid = powerPlan.dictPowerPlanInfo[chkActive.SelectedItem.ToString()];
-            var proc = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "powercfg.exe",
-                    Arguments = $"/setactive {PowerGuid}",
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow = true
-                }
-            };
-            proc.Start();
-        }
+        //private void chkActive_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    var PowerGuid = powerPlan.dictPowerPlanInfo[chkActive.SelectedItem.ToString()];
+        //    var proc = new Process
+        //    {
+        //        StartInfo = new ProcessStartInfo
+        //        {
+        //            FileName = "powercfg.exe",
+        //            Arguments = $"/setactive {PowerGuid}",
+        //            UseShellExecute = false,
+        //            RedirectStandardOutput = true,
+        //            CreateNoWindow = true
+        //        }
+        //    };
+        //    proc.Start();
+        //}
         private void ChangePower(string PowerGuid)
         {
             var proc = new Process
@@ -202,7 +196,7 @@ namespace PowerController
                 ChangePower(powerPlan.dictPowerPlanInfo[cmbIdle.SelectedItem.ToString()]);
             }
 
-            label1.Text = GetLastUserInput.GetIdleTickCount().ToString();
+            cmbTurnOn.Text = GetLastUserInput.GetIdleTickCount().ToString();
 
 
             if (proBarIdleCountDown.Value == 0)timer1.Enabled=false;
@@ -221,7 +215,7 @@ namespace PowerController
             addToRegForRun reg = new addToRegForRun();
             string key = "PowerController";
             string value = System.Environment.CommandLine.Replace("\"", "");  //會取得程式的位址加雙引號，所以要移掉
-            if (chkAutoOpen.Checked)
+            if (cmbTurnOn.Checked)
             {
                 reg.add(key, value);
                 reg.chk(key);
@@ -233,21 +227,32 @@ namespace PowerController
 
         private void btnOpenPowerPlan_Click(object sender, EventArgs e)
         {
-            GetLastUserInput.GetIdleTickCount();
-
-            //var cplPath = System.IO.Path.Combine(Environment.SystemDirectory, "control.exe");
-            //System.Diagnostics.Process.Start(cplPath, "/name Microsoft.PowerOptions");
+            var cplPath = System.IO.Path.Combine(Environment.SystemDirectory, "control.exe");
+            System.Diagnostics.Process.Start(cplPath, "/name Microsoft.PowerOptions");
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
             //label1.Text = Method1((int)GetLastUserInput.GetIdleTickCount());
-
+            lblIdleCountDwon.Text = String.Format($"{proBarIdleCountDown.Value}ｓ");
             AryCurrentPowerPlan = powerPlan.getCurrentPowerPlan();
-            var iIndex = cmbCurrentPowerPlan.FindString(AryCurrentPowerPlan[0]);
-            cmbCurrentPowerPlan.SelectedIndex = iIndex;
-            if (GetLastUserInput.GetIdleTickCount() < 50)
+            //var iIndex = cmbCurrentPowerPlan.FindString(AryCurrentPowerPlan[0]);
+            //cmbCurrentPowerPlan.SelectedIndex = iIndex;
+            lblCurrentPowerPlan.Text = AryCurrentPowerPlan[0];
+            bSoftwareActive = frmAppSetting.ScanColumns(frmAppSetting._dgpProcess);
+            //如果有列表中的軟體在執行中
+            if (bSoftwareActive)
             {
+                cmbActive.Enabled = false;
+                cmbIdle.Enabled = false;
+                //且當前電腦的電源設定跟UI中的 軟體執行時的電源設定不符合，則執行電源設定變更
+                //雙重if是為了避免一直執行設定電源的cmd指令
+                if (powerPlan.getCurrentPowerPlan()[0]!= cmbExe.Text) ChangePower(powerPlan.dictPowerPlanInfo[cmbExe.SelectedItem.ToString()]);
+            }
+            else if (GetLastUserInput.GetIdleTickCount() < 50)
+            {
+                cmbActive.Enabled = true;
+                cmbIdle.Enabled = true;
                 ChangePower(powerPlan.dictPowerPlanInfo[cmbActive.SelectedItem.ToString()]);
                 setProcessBar(setIdleTime);
                 timer1.Enabled = true;
@@ -264,7 +269,14 @@ namespace PowerController
 
         private void cmbCurrentPowerPlan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChangePower(powerPlan.dictPowerPlanInfo[cmbCurrentPowerPlan.SelectedItem.ToString()]);
+            //ChangePower(powerPlan.dictPowerPlanInfo[cmbCurrentPowerPlan.SelectedItem.ToString()]);
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            frmAppSetting.ShowDialog(this);
+            var aa = frmAppSetting._dgpProcess.Rows;
+            Console.WriteLine();
         }
     }
 }
