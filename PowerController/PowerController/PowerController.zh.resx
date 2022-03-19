@@ -120,8 +120,28 @@
   <data name="lblCD.Text" xml:space="preserve">
     <value>閒置時間：</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cmbExe.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmbExe.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 29</value>
+  </data>
+  <data name="cmbIdle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="cmbIdle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 29</value>
+  </data>
   <data name="lblCurretPowerPlan.Text" xml:space="preserve">
     <value>當前電源計畫：</value>
+  </data>
+  <data name="cmbActive.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="cmbActive.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 29</value>
   </data>
   <data name="btnOpenPowerPlan.Values.Text" xml:space="preserve">
     <value>電源選項</value>
@@ -138,11 +158,59 @@
   <data name="lblIdle.Text" xml:space="preserve">
     <value>閒置中：</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmbTurnOn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 339</value>
+  </data>
   <data name="cmbTurnOn.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 29</value>
   </data>
   <data name="cmbTurnOn.Values.Text" xml:space="preserve">
     <value>開機時啟動</value>
+  </data>
+  <data name="chkStop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 29</value>
+  </data>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>737, 382</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>745, 390</value>
+  </data>
+  <data name="showToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 32</value>
+  </data>
+  <data name="powerPlanToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 32</value>
+  </data>
+  <data name="powerPlanToolStripMenuItem.Text" xml:space="preserve">
+    <value>PowerPlan</value>
+  </data>
+  <data name="hideToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 32</value>
+  </data>
+  <data name="hideToolStripMenuItem.Text" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="stopToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 32</value>
+  </data>
+  <data name="stopToolStripMenuItem.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 32</value>
+  </data>
+  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 164</value>
+  </data>
+  <data name="notifyIcon1.Icon" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="notifyIcon1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>745, 390</value>
   </data>
 </root>

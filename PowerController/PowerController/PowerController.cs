@@ -19,16 +19,7 @@ namespace PowerController
 {
     public partial class PowerController : Form
     {
-        /*
-        1.(O)開機後執行
-        2.序列化記住選項
-        3.右下角執行
-        4.(O)列出所有選項電源計畫
-        5.UI倒數更新
-        6.(O)UI的下拉式選單內容，依據電腦中的電源計畫數量不同而不同
-
-         
-         */
+        private const string ICON_FILE_PATH = @"C:\?\?\?\SomeIcon.ico";
         frmAppSetting frmAppSetting = new frmAppSetting(); 
         private int setIdleTime { get; set; } = 0;
         private PowerPlan powerPlan { get; set; }
@@ -41,6 +32,7 @@ namespace PowerController
             InitializeComponent();
             setProcessBar(1);
             powerPlan = new PowerPlan();
+            notifyIcon1.Text = this.Text;
             foreach (var item in powerPlan.dictPowerPlanInfo)
             {
                 cmbActive.Items.Add(item.Key);
@@ -54,50 +46,11 @@ namespace PowerController
             //Process.Start("powercfg"," /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c");
             DeserializeFormSettings();
         }
-        
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                if (this.WindowState == FormWindowState.Normal)
-                {
-                    this.WindowState = FormWindowState.Maximized;
-                    this.Hide();
-                }
-                else if (this.WindowState == FormWindowState.Minimized)
-                {
-                    this.Show();
-                    this.WindowState = FormWindowState.Normal;
-                    this.Activate();
-                }
-            }
-            else if (e.Button == MouseButtons.Right)
-            {
-                //if (MessageBox.Show("", "",MessageBoxButton.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
-                //{
-                //    DialogResult = DialogResult.No;
-                //    Dispose();
-                //    Close();
-                //}
-            }
-        }
-
-        //private void chkActive_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    var PowerGuid = powerPlan.dictPowerPlanInfo[chkActive.SelectedItem.ToString()];
-        //    var proc = new Process
-        //    {
-        //        StartInfo = new ProcessStartInfo
-        //        {
-        //            FileName = "powercfg.exe",
-        //            Arguments = $"/setactive {PowerGuid}",
-        //            UseShellExecute = false,
-        //            RedirectStandardOutput = true,
-        //            CreateNoWindow = true
-        //        }
-        //    };
-        //    proc.Start();
-        //}
+ 
+        /// <summary>
+        /// 變更當前電源設定（需指定電源名稱的唯一碼）
+        /// </summary>
+        /// <param name="PowerGuid"></param>
         private void ChangePower(string PowerGuid)
         {
             var proc = new Process
@@ -116,13 +69,16 @@ namespace PowerController
 
         private void PowerController_FormClosing(object sender, FormClosingEventArgs e)
         {
+            e.Cancel = true;
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
             //Assigning the current selected index of combobox to serialize class.
             SaveParameter SP = new SaveParameter();
             SP.cmbActive_selectIndex = this.cmbActive.SelectedIndex;
             SP.cmbIdle_selectIndex = this.cmbIdle.SelectedIndex;
             SP.cmbExecute_selectIndex = this.cmbExe.SelectedIndex;
             SP.cmbCountDown_selectIndex = this.cmbSetIdleTime.SelectedIndex;
-            SP.cmbWakeup_selectIndex = this.cmbWakeUp.SelectedIndex;
+ 
             //Serialize
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fsout = new FileStream("ComboBoxSettings.binary", FileMode.Create, FileAccess.Write, FileShare.None);
@@ -138,6 +94,10 @@ namespace PowerController
                 //Some Exception occured
             }
         }
+
+        /// <summary>
+        /// 反序列化，解析並設定上次關閉軟體前的設定
+        /// </summary>
         public void DeserializeFormSettings()
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -156,7 +116,6 @@ namespace PowerController
                     this.cmbIdle.SelectedIndex = f1.cmbIdle_selectIndex;
                     this.cmbExe.SelectedIndex = f1.cmbExecute_selectIndex;
                     this.cmbSetIdleTime.SelectedIndex = f1.cmbCountDown_selectIndex;
-                    this.cmbWakeUp.SelectedIndex = f1.cmbWakeup_selectIndex;
                 }
             }
             catch (Exception Ex)
@@ -170,6 +129,10 @@ namespace PowerController
         {
 
         }
+        /// <summary>
+        /// 設定倒數計時的碼表
+        /// </summary>
+        /// <param name="pBarmax"></param>
         private void setProcessBar(int pBarmax)
         {
             proBarIdleCountDown.Visible = true;
@@ -186,19 +149,13 @@ namespace PowerController
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-           
+
             proBarIdleCountDown.PerformStep();
-
-
             if (proBarIdleCountDown.Value == 0 && timer1.Enabled == true)
             { 
                 Console.WriteLine("執行設定作業");
                 ChangePower(powerPlan.dictPowerPlanInfo[cmbIdle.SelectedItem.ToString()]);
             }
-
-            cmbTurnOn.Text = GetLastUserInput.GetIdleTickCount().ToString();
-
-
             if (proBarIdleCountDown.Value == 0)timer1.Enabled=false;
         }
 
@@ -224,11 +181,17 @@ namespace PowerController
                 reg.remove(key);
  
         }
-
-        private void btnOpenPowerPlan_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 開啟控制台的電源計畫
+        /// </summary>
+        private void OpenPowerPlan()
         {
             var cplPath = System.IO.Path.Combine(Environment.SystemDirectory, "control.exe");
             System.Diagnostics.Process.Start(cplPath, "/name Microsoft.PowerOptions");
+        }
+        private void btnOpenPowerPlan_Click(object sender, EventArgs e)
+        {
+            OpenPowerPlan();
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -240,6 +203,7 @@ namespace PowerController
             //cmbCurrentPowerPlan.SelectedIndex = iIndex;
             lblCurrentPowerPlan.Text = AryCurrentPowerPlan[0];
             bSoftwareActive = frmAppSetting.ScanColumns(frmAppSetting._dgpProcess);
+            if (chkStop.Checked) return;
             //如果有列表中的軟體在執行中
             if (bSoftwareActive)
             {
@@ -259,24 +223,67 @@ namespace PowerController
             } 
 
         }
-        static string Method1(int millisecs)
-        {
-            int hours = millisecs / 3600000;
-            int mins = (millisecs % 3600000) / 60000;
-            // Make sure you use the appropriate decimal separator
-            return string.Format("{0:D2}:{1:D2}:{2:D2}", hours, mins, millisecs % 60000 / 1000);
-        }
-
-        private void cmbCurrentPowerPlan_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //ChangePower(powerPlan.dictPowerPlanInfo[cmbCurrentPowerPlan.SelectedItem.ToString()]);
-        }
-
         private void btnOpen_Click(object sender, EventArgs e)
         {
             frmAppSetting.ShowDialog(this);
             var aa = frmAppSetting._dgpProcess.Rows;
-            Console.WriteLine();
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) WindowState = FormWindowState.Normal;
+
+        }
+
+        private void chkStop_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkStop.Checked) timer1.Enabled = false;
+            else timer1.Enabled = true;
+        }
+
+        private void ToolStripMenu_EventClick(object sender, EventArgs e)
+        {
+            ToolStripMenuItem tsm = (ToolStripMenuItem)sender;
+            switch (tsm.Name)
+            {
+                case "stopToolStripMenuItem":
+                    tsm.Checked= !tsm.Checked;
+
+                    if(tsm.Checked==true) tsm.CheckState = CheckState.Checked;
+                    else tsm.CheckState = CheckState.Unchecked;
+
+                    break;
+                case "powerPlanToolStripMenuItem":
+                    OpenPowerPlan();
+                    break;
+                case "hideToolStripMenuItem":
+ 
+                    this.WindowState = FormWindowState.Minimized;
+                    this.ShowInTaskbar = false;
+                    break;
+                case "showToolStripMenuItem":
+                    WindowState = FormWindowState.Normal;
+                    break;
+                case "exitToolStripMenuItem":
+                    this.Dispose();
+                    this.Close();
+                    break;
+            }
+        }
+
+        private void PowerController_Resize(object sender, EventArgs e)
+        {
+            //不使用這個事件的話，會發生多個應用程式ico同時存在右下角的現象
+            if (WindowState == FormWindowState.Minimized)
+            {
+                notifyIcon1.Icon = Icon.ExtractAssociatedIcon(@"C:\Users\User\Downloads\8666656_check_circle_icon.ico");
+                notifyIcon1.Visible = true;
+            }
+            else
+            {
+                // kill the icon
+                notifyIcon1.Icon = null;
+            }
         }
     }
 }

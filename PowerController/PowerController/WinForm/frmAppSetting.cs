@@ -20,6 +20,7 @@ namespace PowerController.WinForm
         private const string COL2_STATE = "State";
         private const string COL3_DESCRIBE = "Describe";
         private readonly string XML_SAVE_PATH = $@"{Directory.GetCurrentDirectory()}\PowerControl_Software_List.xml";
+
         public KryptonDataGridView _dgpProcess { get; }
         public frmAppSetting()
         {       
@@ -161,7 +162,7 @@ namespace PowerController.WinForm
 
 
         /// <summary>
-        /// 掃描軟體是否執行中
+        /// 掃描清單中的軟體是否執行中
         /// </summary>
         /// <param name="dgvProcess"></param>
         /// <returns></returns>

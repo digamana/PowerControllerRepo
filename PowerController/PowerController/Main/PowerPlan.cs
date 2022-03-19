@@ -55,6 +55,10 @@ namespace PowerController.Main
             }
             return lstPowerPlanInfo;
         }
+        /// <summary>
+        /// 取得控制台電源計畫的名稱及唯一碼
+        /// </summary>
+        /// <returns></returns>
         public string[] getCurrentPowerPlan()
         {
             var proc = new Process

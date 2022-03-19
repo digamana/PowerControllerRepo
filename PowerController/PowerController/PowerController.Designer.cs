@@ -34,8 +34,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbSetIdleTime = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.cmbWakeUp = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.lblWake = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lblCD = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbExe = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
@@ -52,23 +50,26 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.proBarIdleCountDown = new System.Windows.Forms.ProgressBar();
             this.lblIdleCountDwon = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblCurretStatusTro = new System.Windows.Forms.Label();
-            this.lblCurretStatusDetail = new System.Windows.Forms.Label();
+            this.chkStop = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.kryptonCommand1 = new ComponentFactory.Krypton.Toolkit.KryptonCommand();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.powerPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSetIdleTime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbWakeUp)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbExe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbIdle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbActive)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -84,15 +85,13 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.cmbTurnOn, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.chkStop, 0, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // tableLayoutPanel7
             // 
             resources.ApplyResources(this.tableLayoutPanel7, "tableLayoutPanel7");
             this.tableLayoutPanel7.Controls.Add(this.cmbSetIdleTime, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.cmbWakeUp, 3, 0);
-            this.tableLayoutPanel7.Controls.Add(this.lblWake, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.lblCD, 0, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             // 
@@ -119,29 +118,10 @@
             this.cmbSetIdleTime.Name = "cmbSetIdleTime";
             this.cmbSetIdleTime.SelectedIndexChanged += new System.EventHandler(this.cmbSetIdleTime_SelectedIndexChanged);
             // 
-            // cmbWakeUp
-            // 
-            resources.ApplyResources(this.cmbWakeUp, "cmbWakeUp");
-            this.cmbWakeUp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbWakeUp.DropDownWidth = 121;
-            this.cmbWakeUp.Items.AddRange(new object[] {
-            resources.GetString("cmbWakeUp.Items"),
-            resources.GetString("cmbWakeUp.Items1"),
-            resources.GetString("cmbWakeUp.Items2")});
-            this.cmbWakeUp.Name = "cmbWakeUp";
-            // 
-            // lblWake
-            // 
-            resources.ApplyResources(this.lblWake, "lblWake");
-            this.lblWake.Name = "lblWake";
-            this.lblWake.Values.ExtraText = resources.GetString("lblWake.Values.ExtraText");
-            this.lblWake.Values.ImageTransparentColor = ((System.Drawing.Color)(resources.GetObject("lblWake.Values.ImageTransparentColor")));
-            this.lblWake.Values.Text = resources.GetString("lblWake.Values.Text");
-            // 
             // lblCD
             // 
             resources.ApplyResources(this.lblCD, "lblCD");
-            this.lblCD.BackColor = System.Drawing.Color.LightCyan;
+            this.lblCD.BackColor = System.Drawing.Color.Aquamarine;
             this.lblCD.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblCD.Name = "lblCD";
             // 
@@ -166,6 +146,7 @@
             this.cmbExe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbExe.DropDownWidth = 121;
             this.cmbExe.Name = "cmbExe";
+            this.cmbExe.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Black;
             // 
             // cmbIdle
             // 
@@ -173,6 +154,7 @@
             this.cmbIdle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIdle.DropDownWidth = 121;
             this.cmbIdle.Name = "cmbIdle";
+            this.cmbIdle.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Black;
             // 
             // lblCurretPowerPlan
             // 
@@ -186,11 +168,13 @@
             this.cmbActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbActive.DropDownWidth = 121;
             this.cmbActive.Name = "cmbActive";
+            this.cmbActive.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Black;
             // 
             // btnOpenPowerPlan
             // 
             resources.ApplyResources(this.btnOpenPowerPlan, "btnOpenPowerPlan");
             this.btnOpenPowerPlan.Name = "btnOpenPowerPlan";
+            this.btnOpenPowerPlan.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Silver;
             this.btnOpenPowerPlan.Values.ExtraText = resources.GetString("btnOpenPowerPlan.Values.ExtraText");
             this.btnOpenPowerPlan.Values.ImageTransparentColor = ((System.Drawing.Color)(resources.GetObject("btnOpenPowerPlan.Values.ImageTransparentColor")));
             this.btnOpenPowerPlan.Values.Text = resources.GetString("btnOpenPowerPlan.Values.Text");
@@ -200,6 +184,7 @@
             // 
             resources.ApplyResources(this.btnOpen, "btnOpen");
             this.btnOpen.Name = "btnOpen";
+            this.btnOpen.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Silver;
             this.btnOpen.Values.ExtraText = resources.GetString("btnOpen.Values.ExtraText");
             this.btnOpen.Values.ImageTransparentColor = ((System.Drawing.Color)(resources.GetObject("btnOpen.Values.ImageTransparentColor")));
             this.btnOpen.Values.Text = resources.GetString("btnOpen.Values.Text");
@@ -256,22 +241,14 @@
             this.lblIdleCountDwon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblIdleCountDwon.Name = "lblIdleCountDwon";
             // 
-            // tableLayoutPanel4
+            // chkStop
             // 
-            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-            this.tableLayoutPanel4.Controls.Add(this.lblCurretStatusTro, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.lblCurretStatusDetail, 1, 0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            // 
-            // lblCurretStatusTro
-            // 
-            resources.ApplyResources(this.lblCurretStatusTro, "lblCurretStatusTro");
-            this.lblCurretStatusTro.Name = "lblCurretStatusTro";
-            // 
-            // lblCurretStatusDetail
-            // 
-            resources.ApplyResources(this.lblCurretStatusDetail, "lblCurretStatusDetail");
-            this.lblCurretStatusDetail.Name = "lblCurretStatusDetail";
+            resources.ApplyResources(this.chkStop, "chkStop");
+            this.chkStop.Name = "chkStop";
+            this.chkStop.Values.ExtraText = resources.GetString("chkStop.Values.ExtraText");
+            this.chkStop.Values.ImageTransparentColor = ((System.Drawing.Color)(resources.GetObject("chkStop.Values.ImageTransparentColor")));
+            this.chkStop.Values.Text = resources.GetString("chkStop.Values.Text");
+            this.chkStop.CheckedChanged += new System.EventHandler(this.chkStop_CheckedChanged);
             // 
             // timer1
             // 
@@ -279,32 +256,78 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // kryptonCommand1
-            // 
-            resources.ApplyResources(this.kryptonCommand1, "kryptonCommand1");
-            // 
             // timer2
             // 
             this.timer2.Enabled = true;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // notifyIcon1
+            // 
+            resources.ApplyResources(this.notifyIcon1, "notifyIcon1");
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showToolStripMenuItem,
+            this.powerPlanToolStripMenuItem,
+            this.hideToolStripMenuItem,
+            this.stopToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.ShowCheckMargin = true;
+            this.contextMenuStrip1.ShowImageMargin = false;
+            // 
+            // exitToolStripMenuItem
+            // 
+            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
+            // 
+            // showToolStripMenuItem
+            // 
+            resources.ApplyResources(this.showToolStripMenuItem, "showToolStripMenuItem");
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
+            // 
+            // hideToolStripMenuItem
+            // 
+            resources.ApplyResources(this.hideToolStripMenuItem, "hideToolStripMenuItem");
+            this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
+            this.hideToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
+            // 
+            // powerPlanToolStripMenuItem
+            // 
+            resources.ApplyResources(this.powerPlanToolStripMenuItem, "powerPlanToolStripMenuItem");
+            this.powerPlanToolStripMenuItem.Name = "powerPlanToolStripMenuItem";
+            this.powerPlanToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
+            // 
+            // stopToolStripMenuItem
+            // 
+            resources.ApplyResources(this.stopToolStripMenuItem, "stopToolStripMenuItem");
+            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
+            // 
             // PowerController
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCyan;
+            this.BackColor = System.Drawing.Color.Aquamarine;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "PowerController";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PowerController_FormClosing);
+            this.Resize += new System.EventHandler(this.PowerController_Resize);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSetIdleTime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbWakeUp)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbExe)).EndInit();
@@ -312,8 +335,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbActive)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -322,10 +344,8 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Timer timer1;
-        private ComponentFactory.Krypton.Toolkit.KryptonCommand kryptonCommand1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbWakeUp;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbExe;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbIdle;
@@ -333,11 +353,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpen;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox cmbTurnOn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblWake;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbSetIdleTime;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label lblCurretStatusTro;
-        private System.Windows.Forms.Label lblCurretStatusDetail;
         private System.Windows.Forms.Label lblCurretPowerPlan;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpenPowerPlan;
         private System.Windows.Forms.ProgressBar proBarIdleCountDown;
@@ -348,6 +364,14 @@
         private System.Windows.Forms.Label lblIdle;
         private System.Windows.Forms.Label lblCurrentPowerPlan;
         private System.Windows.Forms.Label lblIdleCountDwon;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox chkStop;
+        private System.Windows.Forms.ToolStripMenuItem hideToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem powerPlanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
     }
 }
 
