@@ -16,5 +16,8 @@ namespace PowerController.Main
         public int cmbExecute_selectIndex = 0;
         public int cmbCountDown_selectIndex = 0;
         public int cmbWakeup_selectIndex = 0;
+        public int isStop = 0;  // 0: ()停用   1:(V)停用
+        public int ActiveComputerStart = 0; // 0: ()開機時啟動   1:(V)開機時啟動
+        public int CloseHide = 0; // 0: ()關閉時，右下角隱藏   1:(V)關閉時，右下角隱藏
     }
 }

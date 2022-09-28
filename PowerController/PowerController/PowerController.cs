@@ -24,8 +24,10 @@ namespace PowerController
         private int setIdleTime { get; set; } = 0;
         private PowerPlan powerPlan { get; set; }
         private bool bTriggerMIn { get; set; } = false;
-        private string[] AryCurrentPowerPlan { get; set; }
+        private bool IsMoving { get; set; } = false;
+        private readonly string[] AryCurrentPowerPlan = new PowerPlan().getCurrentPowerPlan();
         bool bSoftwareActive { get; set; } = false;
+        FormClosingEventArgs formClosingEventArgs { get; set; }
         public PowerController()
         {
           
@@ -70,6 +72,8 @@ namespace PowerController
         private void PowerController_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
+            formClosingEventArgs = e;
+            formClosingEventArgs.Cancel = true;
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
             //Assigning the current selected index of combobox to serialize class.
@@ -78,7 +82,9 @@ namespace PowerController
             SP.cmbIdle_selectIndex = this.cmbIdle.SelectedIndex;
             SP.cmbExecute_selectIndex = this.cmbExe.SelectedIndex;
             SP.cmbCountDown_selectIndex = this.cmbSetIdleTime.SelectedIndex;
- 
+            SP.isStop = this.chkStop.Checked == false ? 0 : 1;
+            SP.ActiveComputerStart = this.cmbTurnOn.Checked == false ? 0 : 1;
+            SP.CloseHide = this.chkCloseHide.Checked == false ? 0 : 1;
             //Serialize
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fsout = new FileStream("ComboBoxSettings.binary", FileMode.Create, FileAccess.Write, FileShare.None);
@@ -116,6 +122,9 @@ namespace PowerController
                     this.cmbIdle.SelectedIndex = f1.cmbIdle_selectIndex;
                     this.cmbExe.SelectedIndex = f1.cmbExecute_selectIndex;
                     this.cmbSetIdleTime.SelectedIndex = f1.cmbCountDown_selectIndex;
+                    this.chkStop.Checked = f1.isStop == 0 ? false : true;
+                    this.cmbTurnOn.Checked = f1.ActiveComputerStart == 0 ? false : true;
+                    this.chkCloseHide.Checked = f1.CloseHide == 0 ? false : true;
                 }
             }
             catch (Exception Ex)
@@ -161,8 +170,7 @@ namespace PowerController
 
         private void cmbSetIdleTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String setting = cmbSetIdleTime.Text;
-            String[] strArr = cmbSetIdleTime.Text.Split(':');
+            string[] strArr = cmbSetIdleTime.Text.Split(':');
             setIdleTime = int.Parse(strArr[0]) * 3600 + int.Parse(strArr[1]) * 60 + int.Parse(strArr[2]);
             setProcessBar(setIdleTime);
         }
@@ -194,15 +202,23 @@ namespace PowerController
             OpenPowerPlan();
         }
 
+        /// <summary>
+        /// 這是拖曳時會Lag的主因 待改良
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer2_Tick(object sender, EventArgs e)
         {
+            #region 拖曳視窗移動時 會因為這段而LAF 待改良
             //label1.Text = Method1((int)GetLastUserInput.GetIdleTickCount());
             lblIdleCountDwon.Text = String.Format($"{proBarIdleCountDown.Value}ｓ");
-            AryCurrentPowerPlan = powerPlan.getCurrentPowerPlan();
+            //AryCurrentPowerPlan = powerPlan.getCurrentPowerPlan();
             //var iIndex = cmbCurrentPowerPlan.FindString(AryCurrentPowerPlan[0]);
             //cmbCurrentPowerPlan.SelectedIndex = iIndex;
             lblCurrentPowerPlan.Text = AryCurrentPowerPlan[0];
             bSoftwareActive = frmAppSetting.ScanColumns(frmAppSetting._dgpProcess);
+
+            #endregion
             if (chkStop.Checked) return;
             //如果有列表中的軟體在執行中
             if (bSoftwareActive)
@@ -284,6 +300,19 @@ namespace PowerController
                 // kill the icon
                 notifyIcon1.Icon = null;
             }
+            if (this.chkCloseHide.Checked == false && formClosingEventArgs != null)
+            {
+                formClosingEventArgs.Cancel = false;
+            }
+            else if (this.WindowState == FormWindowState.Minimized)
+            { 
+            }
+
+        }
+
+        private void PowerController_Move(object sender, EventArgs e)
+        {
+             
         }
     }
 }

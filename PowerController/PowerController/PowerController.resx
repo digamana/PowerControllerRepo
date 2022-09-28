@@ -165,8 +165,8 @@
   <data name="cmbSetIdleTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 29</value>
   </data>
-  <data name="cmbSetIdleTime.Items7" xml:space="preserve">
-    <value>00:30:00</value>
+  <data name="lblIdle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="cmbActive.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 29</value>
@@ -180,8 +180,8 @@
   <data name="showToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 32</value>
   </data>
-  <data name="&gt;&gt;lblExecuting.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
+  <data name="chkCloseHide.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;btnOpen.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -192,8 +192,14 @@
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>737, 419</value>
   </data>
+  <data name="lblExecuting.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="lblActive.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 50</value>
+  </data>
+  <data name="&gt;&gt;cmbTurnOn.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;btnOpenPowerPlan.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -285,11 +291,14 @@
   <data name="lblCurretPowerPlan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblExecuting.Text" xml:space="preserve">
+    <value>When Executing</value>
+  </data>
   <data name="&gt;&gt;btnOpen.Name" xml:space="preserve">
     <value>btnOpen</value>
   </data>
-  <data name="lblExecuting.Text" xml:space="preserve">
-    <value>When Executing</value>
+  <data name="cmbActive.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 54</value>
   </data>
   <data name="showToolStripMenuItem.Text" xml:space="preserve">
     <value>Show</value>
@@ -297,8 +306,11 @@
   <data name="&gt;&gt;cmbSetIdleTime.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lblExecuting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 50</value>
+  <data name="lblWake.Values.ExtraText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;chkCloseHide.Type" xml:space="preserve">
+    <value>ComponentFactory.Krypton.Toolkit.KryptonCheckBox, ComponentFactory.Krypton.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
   </data>
   <data name="tableLayoutPanel5.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
@@ -330,11 +342,11 @@
   <data name="lblIdle.Font" type="System.Drawing.Font, System.Drawing">
     <value>微軟正黑體, 9pt</value>
   </data>
-  <data name="lblIdle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="proBarIdleCountDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
+  </data>
+  <data name="&gt;&gt;powerPlanToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkStop.Type" xml:space="preserve">
     <value>ComponentFactory.Krypton.Toolkit.KryptonCheckBox, ComponentFactory.Krypton.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
@@ -378,14 +390,11 @@
   <data name="btnOpen.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value />
   </data>
-  <data name="&gt;&gt;powerPlanToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="proBarIdleCountDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>523, 26</value>
   </data>
   <data name="lblIdleCountDwon.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
-  </data>
-  <data name="contextMenuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
   </data>
   <data name="lblIdleCountDwon.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -417,14 +426,11 @@
   <data name="cmbWakeUp.Items" xml:space="preserve">
     <value>KeyBoard</value>
   </data>
-  <data name="lblCD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
+  <data name="chkCloseHide.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 386</value>
   </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Name" xml:space="preserve">
     <value>exitToolStripMenuItem</value>
-  </data>
-  <data name="lblCurretPowerPlan.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;lblCurretPowerPlan.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -441,11 +447,14 @@
   <data name="&gt;&gt;lblActive.Name" xml:space="preserve">
     <value>lblActive</value>
   </data>
-  <data name="lblCurrentPowerPlan.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="kryptonCheckBox1.Values.ExtraText" xml:space="preserve">
+    <value />
   </data>
   <data name="cmbIdle.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 104</value>
+  </data>
+  <data name="cmbSetIdleTime.Items6" xml:space="preserve">
+    <value>00:20:00</value>
   </data>
   <data name="&gt;&gt;cmbExe.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -456,11 +465,11 @@
   <data name="lblIdle.Text" xml:space="preserve">
     <value>When Idle</value>
   </data>
-  <data name="&gt;&gt;btnOpenPowerPlan.Type" xml:space="preserve">
-    <value>ComponentFactory.Krypton.Toolkit.KryptonButton, ComponentFactory.Krypton.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
-  </data>
   <data name="tableLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;lblIdleCountDwon.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lblIdleCountDwon.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -474,14 +483,20 @@
   <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
+  <data name="&gt;&gt;chkCloseHide.Name" xml:space="preserve">
+    <value>chkCloseHide</value>
+  </data>
   <data name="&gt;&gt;lblIdleCountDwon.Name" xml:space="preserve">
     <value>lblIdleCountDwon</value>
+  </data>
+  <data name="lblCurrentPowerPlan.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;timer1.Name" xml:space="preserve">
     <value>timer1</value>
   </data>
-  <data name="&gt;&gt;proBarIdleCountDown.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tableLayoutPanel7.Name" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;cmbIdle.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -516,9 +531,6 @@
   <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel7.Name" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
   <data name="&gt;&gt;lblCD.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -546,8 +558,8 @@
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 53</value>
   </data>
-  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 32</value>
+  <data name="lblCD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
   </data>
   <data name="cmbTurnOn.Values.ExtraText" xml:space="preserve">
     <value />
@@ -561,8 +573,11 @@
   <data name="chkStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 29</value>
   </data>
-  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblCurretPowerPlan.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel2" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,51.53181" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -573,8 +588,11 @@
   <data name="&gt;&gt;hideToolStripMenuItem.Name" xml:space="preserve">
     <value>hideToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;chkCloseHide.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 32</value>
   </data>
   <data name="tableLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -590,6 +608,9 @@
   </data>
   <data name="chkStop.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value />
+  </data>
+  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tableLayoutPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -607,7 +628,7 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel7" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel5" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cmbTurnOn" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel3" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkStop" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,50,Absolute,40,Absolute,203,Percent,49.29578,Percent,50.70422" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="chkCloseHide" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel7" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel5" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cmbTurnOn" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel3" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkStop" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,50,Absolute,40,Absolute,203,Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="&gt;&gt;lblCurretPowerPlan.Name" xml:space="preserve">
     <value>lblCurretPowerPlan</value>
@@ -646,7 +667,7 @@
     <value>194, 50</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="cmbSetIdleTime.Items13" xml:space="preserve">
     <value>06:00:00</value>
@@ -660,6 +681,9 @@
   <data name="notifyIcon1.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblCurrentPowerPlan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 150</value>
+  </data>
   <data name="cmbSetIdleTime.Items5" xml:space="preserve">
     <value>00:10:00</value>
   </data>
@@ -669,8 +693,8 @@
   <data name="&gt;&gt;tableLayoutPanel7.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
-  <data name="cmbSetIdleTime.Items6" xml:space="preserve">
-    <value>00:20:00</value>
+  <data name="&gt;&gt;proBarIdleCountDown.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="cmbSetIdleTime.Items1" xml:space="preserve">
     <value>00:00:20</value>
@@ -684,14 +708,11 @@
   <data name="cmbSetIdleTime.Items2" xml:space="preserve">
     <value>00:00:30</value>
   </data>
-  <data name="tableLayoutPanel5.RowCount" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
   <data name="tableLayoutPanel7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="lblExecuting.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="contextMenuStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="cmbSetIdleTime.Items9" xml:space="preserve">
     <value>02:00:00</value>
@@ -706,7 +727,7 @@
     <value>cmbTurnOn</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel7.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cmbTurnOn.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 29</value>
@@ -717,8 +738,8 @@
   <data name="tableLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="proBarIdleCountDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 26</value>
+  <data name="lblExecuting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 50</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>731, 34</value>
@@ -848,6 +869,9 @@
   <data name="&gt;&gt;timer2.Name" xml:space="preserve">
     <value>timer2</value>
   </data>
+  <data name="lblWake.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value />
+  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
@@ -872,8 +896,8 @@
   <data name="&gt;&gt;tableLayoutPanel3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lblWake.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value />
+  <data name="cmbSetIdleTime.Items7" xml:space="preserve">
+    <value>00:30:00</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -886,9 +910,6 @@
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="lblCD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 42</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -908,6 +929,9 @@
   <data name="&gt;&gt;tableLayoutPanel7.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
+    <value>contextMenuStrip1</value>
+  </data>
   <data name="btnOpen.Values.Text" xml:space="preserve">
     <value>Set Application Item</value>
   </data>
@@ -923,17 +947,14 @@
   <data name="lblActive.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 50</value>
   </data>
-  <data name="lblCurrentPowerPlan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 150</value>
+  <data name="&gt;&gt;btnOpenPowerPlan.Type" xml:space="preserve">
+    <value>ComponentFactory.Krypton.Toolkit.KryptonButton, ComponentFactory.Krypton.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e</value>
   </data>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </data>
-  <data name="proBarIdleCountDown.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
   </data>
   <data name="cmbSetIdleTime.Items11" xml:space="preserve">
     <value>04:00:00</value>
@@ -1013,17 +1034,20 @@
   <data name="cmbIdle.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;lblExecuting.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;cmbTurnOn.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="tableLayoutPanel5.RowCount" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="lblWake.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="cmbActive.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 54</value>
+  <data name="lblCD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 42</value>
   </data>
   <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="cmbSetIdleTime" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lblCD" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,200,Percent,50,Absolute,200,Percent,50" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -1044,13 +1068,13 @@
     <value>3</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel5.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;cmbSetIdleTime.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;chkStop.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;cmbWakeUp.Name" xml:space="preserve">
     <value>cmbWakeUp</value>
@@ -1058,14 +1082,14 @@
   <data name="lblExecuting.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
+  <data name="&gt;&gt;chkCloseHide.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="lblExecuting.Font" type="System.Drawing.Font, System.Drawing">
     <value>微軟正黑體, 9pt</value>
   </data>
-  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
-    <value>contextMenuStrip1</value>
+  <data name="proBarIdleCountDown.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="cmbWakeUp.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1076,13 +1100,13 @@
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
   </data>
   <data name="cmbExe.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 29</value>
   </data>
-  <data name="btnOpenPowerPlan.Values.ExtraText" xml:space="preserve">
+  <data name="kryptonCheckBox1.Values.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value />
   </data>
   <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
@@ -1094,11 +1118,11 @@
   <data name="&gt;&gt;notifyIcon1.Type" xml:space="preserve">
     <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblIdleCountDwon.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblWake.Values.ExtraText" xml:space="preserve">
+  <data name="btnOpenPowerPlan.Values.ExtraText" xml:space="preserve">
     <value />
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cmbExe.Name" xml:space="preserve">
     <value>cmbExe</value>

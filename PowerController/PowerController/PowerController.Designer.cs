@@ -55,11 +55,12 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.powerPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkCloseHide = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -75,12 +76,15 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // tableLayoutPanel2
             // 
             resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel2.Controls.Add(this.chkCloseHide, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel7, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.cmbTurnOn, 0, 4);
@@ -121,13 +125,14 @@
             // lblCD
             // 
             resources.ApplyResources(this.lblCD, "lblCD");
-            this.lblCD.BackColor = System.Drawing.Color.Aquamarine;
+            this.lblCD.BackColor = System.Drawing.Color.Transparent;
             this.lblCD.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblCD.Name = "lblCD";
             // 
             // tableLayoutPanel5
             // 
             resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
+            this.tableLayoutPanel5.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel5.Controls.Add(this.cmbExe, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.cmbIdle, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.lblCurretPowerPlan, 0, 3);
@@ -211,6 +216,7 @@
             // lblCurrentPowerPlan
             // 
             resources.ApplyResources(this.lblCurrentPowerPlan, "lblCurrentPowerPlan");
+            this.lblCurrentPowerPlan.BackColor = System.Drawing.Color.Pink;
             this.lblCurrentPowerPlan.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblCurrentPowerPlan.Name = "lblCurrentPowerPlan";
             // 
@@ -281,23 +287,11 @@
             this.contextMenuStrip1.ShowCheckMargin = true;
             this.contextMenuStrip1.ShowImageMargin = false;
             // 
-            // exitToolStripMenuItem
-            // 
-            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
-            // 
             // showToolStripMenuItem
             // 
             resources.ApplyResources(this.showToolStripMenuItem, "showToolStripMenuItem");
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
-            // 
-            // hideToolStripMenuItem
-            // 
-            resources.ApplyResources(this.hideToolStripMenuItem, "hideToolStripMenuItem");
-            this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
-            this.hideToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
             // 
             // powerPlanToolStripMenuItem
             // 
@@ -305,22 +299,43 @@
             this.powerPlanToolStripMenuItem.Name = "powerPlanToolStripMenuItem";
             this.powerPlanToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
             // 
+            // hideToolStripMenuItem
+            // 
+            resources.ApplyResources(this.hideToolStripMenuItem, "hideToolStripMenuItem");
+            this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
+            this.hideToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
+            // 
             // stopToolStripMenuItem
             // 
             resources.ApplyResources(this.stopToolStripMenuItem, "stopToolStripMenuItem");
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
             // 
+            // exitToolStripMenuItem
+            // 
+            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
+            // 
+            // chkCloseHide
+            // 
+            resources.ApplyResources(this.chkCloseHide, "chkCloseHide");
+            this.chkCloseHide.Name = "chkCloseHide";
+            this.chkCloseHide.Values.ExtraText = resources.GetString("kryptonCheckBox1.Values.ExtraText");
+            this.chkCloseHide.Values.ImageTransparentColor = ((System.Drawing.Color)(resources.GetObject("kryptonCheckBox1.Values.ImageTransparentColor")));
+            this.chkCloseHide.Values.Text = resources.GetString("kryptonCheckBox1.Values.Text");
+            // 
             // PowerController
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Aquamarine;
+            this.BackColor = System.Drawing.Color.LightYellow;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "PowerController";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PowerController_FormClosing);
+            this.Move += new System.EventHandler(this.PowerController_Move);
             this.Resize += new System.EventHandler(this.PowerController_Resize);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -372,6 +387,7 @@
         private System.Windows.Forms.ToolStripMenuItem hideToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem powerPlanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox chkCloseHide;
     }
 }
 
