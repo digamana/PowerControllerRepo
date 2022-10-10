@@ -19,7 +19,8 @@ namespace PowerController
 {
     public partial class PowerController : Form
     {
-        private const string ICON_FILE_PATH = @"C:\?\?\?\SomeIcon.ico";
+
+        private readonly string ICON_FILE_PATH = $"{AppDomain.CurrentDomain.BaseDirectory}IMG\\ImgPower.ico";
         frmAppSetting frmAppSetting = new frmAppSetting(); 
         private int setIdleTime { get; set; } = 0;
         private PowerPlan powerPlan { get; set; }
@@ -247,7 +248,13 @@ namespace PowerController
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left) WindowState = FormWindowState.Normal;
+            if (this.ShowInTaskbar == false)
+                notifyIcon1.Visible = true;
+
+            this.ShowInTaskbar = true;
+            this.Show();
+            this.Activate();
+            this.WindowState = FormWindowState.Normal;
 
         }
 
@@ -292,7 +299,7 @@ namespace PowerController
             //不使用這個事件的話，會發生多個應用程式ico同時存在右下角的現象
             if (WindowState == FormWindowState.Minimized)
             {
-                notifyIcon1.Icon = Icon.ExtractAssociatedIcon(@"C:\Users\User\Downloads\8666656_check_circle_icon.ico");
+                notifyIcon1.Icon = Icon.ExtractAssociatedIcon(ICON_FILE_PATH);
                 notifyIcon1.Visible = true;
             }
             else

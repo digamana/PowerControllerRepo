@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PowerController));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.chkCloseHide = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbSetIdleTime = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.lblCD = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.hideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chkCloseHide = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -91,6 +91,14 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.chkStop, 0, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            // 
+            // chkCloseHide
+            // 
+            resources.ApplyResources(this.chkCloseHide, "chkCloseHide");
+            this.chkCloseHide.Name = "chkCloseHide";
+            this.chkCloseHide.Values.ExtraText = resources.GetString("chkCloseHide.Values.ExtraText");
+            this.chkCloseHide.Values.ImageTransparentColor = ((System.Drawing.Color)(resources.GetObject("chkCloseHide.Values.ImageTransparentColor")));
+            this.chkCloseHide.Values.Text = resources.GetString("chkCloseHide.Values.Text");
             // 
             // tableLayoutPanel7
             // 
@@ -316,14 +324,6 @@
             resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenu_EventClick);
-            // 
-            // chkCloseHide
-            // 
-            resources.ApplyResources(this.chkCloseHide, "chkCloseHide");
-            this.chkCloseHide.Name = "chkCloseHide";
-            this.chkCloseHide.Values.ExtraText = resources.GetString("kryptonCheckBox1.Values.ExtraText");
-            this.chkCloseHide.Values.ImageTransparentColor = ((System.Drawing.Color)(resources.GetObject("kryptonCheckBox1.Values.ImageTransparentColor")));
-            this.chkCloseHide.Values.Text = resources.GetString("kryptonCheckBox1.Values.Text");
             // 
             // PowerController
             // 
