@@ -29,12 +29,15 @@ namespace PowerController
         private readonly string[] AryCurrentPowerPlan = new PowerPlan().getCurrentPowerPlan();
         bool bSoftwareActive { get; set; } = false;
         FormClosingEventArgs formClosingEventArgs { get; set; }
+        ColorState CurrentColorState { get; set; }
         public PowerController()
         {
           
             InitializeComponent();
+             
             setProcessBar(1);
             powerPlan = new PowerPlan();
+            lblCurrentPowerPlan.Text = powerPlan.getCurrentPowerPlan()[0];
             notifyIcon1.Text = this.Text;
             foreach (var item in powerPlan.dictPowerPlanInfo)
             {
@@ -162,9 +165,20 @@ namespace PowerController
 
             proBarIdleCountDown.PerformStep();
             if (proBarIdleCountDown.Value == 0 && timer1.Enabled == true)
-            { 
+            {
                 Console.WriteLine("執行設定作業");
                 ChangePower(powerPlan.dictPowerPlanInfo[cmbIdle.SelectedItem.ToString()]);
+                //lblExecuting.BackColor = Color.Transparent;
+                //lblIdle.BackColor = Color.FromArgb(128, 255, 128);
+                //lblActive.BackColor = Color.Transparent;
+                chnageColorState(ColorState.Idle);
+                lblCurrentPowerPlan.Text = new PowerPlan().getCurrentPowerPlan()[0];
+            }
+            else
+            {
+                chnageColorState(ColorState.Active);
+                lblCurrentPowerPlan.Text = new PowerPlan().getCurrentPowerPlan()[0];
+
             }
             if (proBarIdleCountDown.Value == 0)timer1.Enabled=false;
         }
@@ -203,41 +217,40 @@ namespace PowerController
             OpenPowerPlan();
         }
 
-        /// <summary>
-        /// 這是拖曳時會Lag的主因 待改良
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void timer2_Tick(object sender, EventArgs e)
         {
-            #region 拖曳視窗移動時 會因為這段而LAF 待改良
-            //label1.Text = Method1((int)GetLastUserInput.GetIdleTickCount());
-            lblIdleCountDwon.Text = String.Format($"{proBarIdleCountDown.Value}ｓ");
-            //AryCurrentPowerPlan = powerPlan.getCurrentPowerPlan();
-            //var iIndex = cmbCurrentPowerPlan.FindString(AryCurrentPowerPlan[0]);
-            //cmbCurrentPowerPlan.SelectedIndex = iIndex;
-            lblCurrentPowerPlan.Text = AryCurrentPowerPlan[0];
-            bSoftwareActive = frmAppSetting.ScanColumns(frmAppSetting._dgpProcess);
 
-            #endregion
+            lblIdleCountDwon.Text = String.Format($"{proBarIdleCountDown.Value}ｓ");
+            
+            bSoftwareActive = frmAppSetting.ScanColumns(frmAppSetting._dgpProcess);
+           // lblCurrentPowerPlan.Text = powerPlan.getCurrentPowerPlan()[0];
             if (chkStop.Checked) return;
             //如果有列表中的軟體在執行中
             if (bSoftwareActive)
             {
+                CurrentColorState = ColorState.Exception;
+                chnageColorState(ColorState.Exception);
                 cmbActive.Enabled = false;
                 cmbIdle.Enabled = false;
                 //且當前電腦的電源設定跟UI中的 軟體執行時的電源設定不符合，則執行電源設定變更
                 //雙重if是為了避免一直執行設定電源的cmd指令
-                if (powerPlan.getCurrentPowerPlan()[0]!= cmbExe.Text) ChangePower(powerPlan.dictPowerPlanInfo[cmbExe.SelectedItem.ToString()]);
+                if (powerPlan.getCurrentPowerPlan()[0] != cmbExe.Text)
+                {
+                    ChangePower(powerPlan.dictPowerPlanInfo[cmbExe.SelectedItem.ToString()]);
+                } 
             }
             else if (GetLastUserInput.GetIdleTickCount() < 50)
             {
+
+                chnageColorState(ColorState.Active);
                 cmbActive.Enabled = true;
                 cmbIdle.Enabled = true;
                 ChangePower(powerPlan.dictPowerPlanInfo[cmbActive.SelectedItem.ToString()]);
                 setProcessBar(setIdleTime);
                 timer1.Enabled = true;
-            } 
+            }
+ 
 
         }
         private void btnOpen_Click(object sender, EventArgs e)
@@ -320,6 +333,51 @@ namespace PowerController
         private void PowerController_Move(object sender, EventArgs e)
         {
              
+        }
+        private enum ColorState 
+        {
+            /// <summary>
+            /// 活動中
+            /// </summary>
+            Active,
+            /// <summary>
+            /// 閒置中
+            /// </summary>
+            Idle,
+            /// <summary>
+            /// 中清單的軟體，使用中的時候
+            /// </summary>
+            Exception,
+        }
+        /// <summary>
+        /// 根據狀態改變Lable顏色
+        /// </summary>
+        /// <param name="_ColorState"></param>
+        private void chnageColorState(ColorState _ColorState)
+        {
+            CurrentColorState = _ColorState;
+            switch (_ColorState)
+            { 
+            case ColorState.Active:
+                    lblActive.BackColor = Color.FromArgb(128, 255, 128);
+                    lblIdle.BackColor = Color.Transparent;
+                    lblExecuting.BackColor = Color.Transparent;
+                   
+                    break;
+            case ColorState.Idle:
+                    lblActive.BackColor = Color.Transparent;
+                    lblIdle.BackColor = Color.FromArgb(128, 255, 128);
+                    lblExecuting.BackColor = Color.Transparent;
+                    break;
+                case ColorState.Exception:
+                    lblActive.BackColor = Color.Transparent;
+                    lblIdle.BackColor = Color.Transparent;
+                    lblExecuting.BackColor = Color.FromArgb(128, 255, 128);
+                    break;
+            }
+            
+         
+
         }
     }
 }

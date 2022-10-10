@@ -70,6 +70,9 @@
     <Compile Include="WinForm\frmAppSetting.Designer.cs">
       <DependentUpon>frmAppSetting.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PowerController.en.resx">
+      <DependentUpon>PowerController.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PowerController.resx">
       <DependentUpon>PowerController.cs</DependentUpon>
     </EmbeddedResource>
