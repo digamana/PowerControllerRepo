@@ -238,6 +238,7 @@ namespace PowerController
                 if (powerPlan.getCurrentPowerPlan()[0] != cmbExe.Text)
                 {
                     ChangePower(powerPlan.dictPowerPlanInfo[cmbExe.SelectedItem.ToString()]);
+                    proBarIdleCountDown.Value = 0;
                 } 
             }
             else if (GetLastUserInput.GetIdleTickCount() < 50)
